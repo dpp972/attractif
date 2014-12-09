@@ -5,10 +5,20 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block meta %}{% endblock %}
     </head>
     <body>
         {% block nav %}{% endblock %}
-        {% block body %}{% endblock %}
+        
+{% block body %}
+        
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-message">
+            <em>Notice</em>: {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
