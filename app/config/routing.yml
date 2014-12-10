@@ -1,9 +1,10 @@
-front:
-    resource: "@FrontOfficeBundle/Controller/"
+main_front:
+    resource: "@MainBundle/Controller/FrontController.php"
     type:     annotation
     prefix:   /
 
-back_office:
-    resource: "@BackOfficeBundle/Controller/"
+main_back:
+    resource: "@MainBundle/Controller/BackController.php"
     type:     annotation
     prefix:   /admin
+
