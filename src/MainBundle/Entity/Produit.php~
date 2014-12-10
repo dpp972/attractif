@@ -2,6 +2,7 @@
 
 namespace MainBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,8 +38,8 @@ class Produit
 
 
     /**
-     * ORM\ManyToOne(targetEntity="Entreprise", inversedBy="produits")
-     * ORM\JoinColumn(name="entreprise_produit", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Entreprise", inversedBy="produits")
+     * @ORM\JoinColumn(name="idEntreprise", referencedColumnName="id")
      */
     protected $entreprise;
 
@@ -57,8 +58,8 @@ class Produit
 
 
     public function __construct(){
-        $this->category = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->evenements = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->category = new ArrayCollection();
+        $this->evenements = new ArrayCollection();
     }
 
     /**
@@ -115,5 +116,94 @@ class Produit
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Add category
+     *
+     * @param \MainBundle\Entity\Categorie $category
+     * @return Produit
+     */
+    public function addCategory(\MainBundle\Entity\Categorie $category)
+    {
+        $this->category[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param \MainBundle\Entity\Categorie $category
+     */
+    public function removeCategory(\MainBundle\Entity\Categorie $category)
+    {
+        $this->category->removeElement($category);
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Add evenements
+     *
+     * @param \MainBundle\Entity\Evenement $evenements
+     * @return Produit
+     */
+    public function addEvenement(\MainBundle\Entity\Evenement $evenements)
+    {
+        $this->evenements[] = $evenements;
+
+        return $this;
+    }
+
+    /**
+     * Remove evenements
+     *
+     * @param \MainBundle\Entity\Evenement $evenements
+     */
+    public function removeEvenement(\MainBundle\Entity\Evenement $evenements)
+    {
+        $this->evenements->removeElement($evenements);
+    }
+
+    /**
+     * Get evenements
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEvenements()
+    {
+        return $this->evenements;
+    }
+
+    /**
+     * Set entreprise
+     *
+     * @param \MainBundle\Entity\Entreprise $entreprise
+     * @return Produit
+     */
+    public function setEntreprise(\MainBundle\Entity\Entreprise $entreprise = null)
+    {
+        $this->entreprise = $entreprise;
+
+        return $this;
+    }
+
+    /**
+     * Get entreprise
+     *
+     * @return \MainBundle\Entity\Entreprise 
+     */
+    public function getEntreprise()
+    {
+        return $this->entreprise;
     }
 }

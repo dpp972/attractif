@@ -2,6 +2,7 @@
 
 namespace MainBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -57,13 +58,19 @@ class Evenement
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="Client", mappedBy="evenements")
+     * @ORM\ManyToMany(targetEntity="Client", mappedBy="inscriptions")
      */
-    private $clients;
+    private $inscrits;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Client", mappedBy="participations")
+     */
+    private $participants;
 
     public function __construct(){
-        $this->clients = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->produits = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->inscrits = new ArrayCollection();
+        $this->participants = new ArrayCollection();
+        $this->produits = new ArrayCollection();
     }
 
     /**

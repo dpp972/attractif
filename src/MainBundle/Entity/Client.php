@@ -80,9 +80,15 @@ class Client
 
     /**
      * @ORM\ManyToMany(targetEntity="Evenement", inversedBy="clients")
-     * @ORM\JoinTable(name="event_users")
+     * @ORM\JoinTable(name="event_user_inscription")
      */
-    private $evenements;
+    private $inscriptions;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Evenement", inversedBy="clients")
+     * @ORM\JoinTable(name="event_user_participation")
+     */
+    private $participations;
 
     public function __construct(){
         $this->evenements = new \Doctrine\Common\Collections\ArrayCollection();

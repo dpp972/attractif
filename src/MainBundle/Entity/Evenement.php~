@@ -2,6 +2,7 @@
 
 namespace MainBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -62,8 +63,8 @@ class Evenement
     private $clients;
 
     public function __construct(){
-        $this->clients = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->produits = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->clients = new ArrayCollection();
+        $this->produits = new ArrayCollection();
     }
 
     /**
@@ -166,5 +167,71 @@ class Evenement
     public function getNbPlace()
     {
         return $this->nbPlace;
+    }
+
+    /**
+     * Add produits
+     *
+     * @param \MainBundle\Entity\Produit $produits
+     * @return Evenement
+     */
+    public function addProduit(\MainBundle\Entity\Produit $produits)
+    {
+        $this->produits[] = $produits;
+
+        return $this;
+    }
+
+    /**
+     * Remove produits
+     *
+     * @param \MainBundle\Entity\Produit $produits
+     */
+    public function removeProduit(\MainBundle\Entity\Produit $produits)
+    {
+        $this->produits->removeElement($produits);
+    }
+
+    /**
+     * Get produits
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProduits()
+    {
+        return $this->produits;
+    }
+
+    /**
+     * Add clients
+     *
+     * @param \MainBundle\Entity\Client $clients
+     * @return Evenement
+     */
+    public function addClient(\MainBundle\Entity\Client $clients)
+    {
+        $this->clients[] = $clients;
+
+        return $this;
+    }
+
+    /**
+     * Remove clients
+     *
+     * @param \MainBundle\Entity\Client $clients
+     */
+    public function removeClient(\MainBundle\Entity\Client $clients)
+    {
+        $this->clients->removeElement($clients);
+    }
+
+    /**
+     * Get clients
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getClients()
+    {
+        return $this->clients;
     }
 }
