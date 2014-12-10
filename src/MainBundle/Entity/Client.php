@@ -4,10 +4,12 @@ namespace MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Client
  *
  * @ORM\Table()
+ * 
  * @ORM\Entity(repositoryClass="MainBundle\Entity\ClientRepository")
  */
 class Client
@@ -91,6 +93,7 @@ class Client
     private $participations;
 
     public function __construct(){
+        parent::__construct();
         $this->evenements = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
