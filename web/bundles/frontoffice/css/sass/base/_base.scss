@@ -13,14 +13,32 @@
     font-style: normal;
 }
 
+html {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+}
 body{
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
     font-family: Constantia, Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
-    background: #000;
+    background: #fff;
     font-weight: 400;
     font-size: 15px;
-    color: #aa3e03;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    color: #fff;
+
+    overflow: hidden;
+}
+.page-content {
+    width: 100%;
+    height: 100%;
+
+    background: url('images/backgroud.jpg');
+
+    overflow: hidden;
+    animation: imageAnimation 3s linear;
+    animation-fill-mode: both;
 }
 
 a, a:hover {
@@ -33,6 +51,14 @@ li {
 }
 
 .container {
+    width: 1280px;
+    
     z-index: 5000;
     overflow: hidden;
+}
+
+.img-responsive {
+    display: block;
+    width: 100%;
+    height: auto;
 }

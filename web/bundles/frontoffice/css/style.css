@@ -1,3 +1,272 @@
+/*!
+ * Bootstrap v3.3.1 (http://getbootstrap.com)
+ * Copyright 2011-2014 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/* line 8, sass/base/_bootstrap.scss */
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* line 13, sass/base/_bootstrap.scss */
+body {
+  margin: 0;
+}
+
+/* line 28, sass/base/_bootstrap.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/* line 34, sass/base/_bootstrap.scss */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+/* line 38, sass/base/_bootstrap.scss */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/* line 43, sass/base/_bootstrap.scss */
+[hidden],
+template {
+  display: none;
+}
+
+/* line 46, sass/base/_bootstrap.scss */
+a {
+  background-color: transparent;
+}
+
+/* line 50, sass/base/_bootstrap.scss */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* line 53, sass/base/_bootstrap.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/* line 57, sass/base/_bootstrap.scss */
+b,
+strong {
+  font-weight: bold;
+}
+
+/* line 60, sass/base/_bootstrap.scss */
+dfn {
+  font-style: italic;
+}
+
+/* line 63, sass/base/_bootstrap.scss */
+h1 {
+  margin: .67em 0;
+  font-size: 2em;
+}
+
+/* line 67, sass/base/_bootstrap.scss */
+mark {
+  color: #000;
+  background: #ff0;
+}
+
+/* line 71, sass/base/_bootstrap.scss */
+small {
+  font-size: 80%;
+}
+
+/* line 75, sass/base/_bootstrap.scss */
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+/* line 81, sass/base/_bootstrap.scss */
+sup {
+  top: -.5em;
+}
+
+/* line 84, sass/base/_bootstrap.scss */
+sub {
+  bottom: -.25em;
+}
+
+/* line 87, sass/base/_bootstrap.scss */
+img {
+  border: 0;
+}
+
+/* line 90, sass/base/_bootstrap.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* line 93, sass/base/_bootstrap.scss */
+figure {
+  margin: 1em 40px;
+}
+
+/* line 96, sass/base/_bootstrap.scss */
+hr {
+  height: 0;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+/* line 102, sass/base/_bootstrap.scss */
+pre {
+  overflow: auto;
+}
+
+/* line 108, sass/base/_bootstrap.scss */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* line 116, sass/base/_bootstrap.scss */
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+
+/* line 121, sass/base/_bootstrap.scss */
+button {
+  overflow: visible;
+}
+
+/* line 125, sass/base/_bootstrap.scss */
+button,
+select {
+  text-transform: none;
+}
+
+/* line 131, sass/base/_bootstrap.scss */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+/* line 136, sass/base/_bootstrap.scss */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/* line 140, sass/base/_bootstrap.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+/* line 144, sass/base/_bootstrap.scss */
+input {
+  line-height: normal;
+}
+
+/* line 148, sass/base/_bootstrap.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+/* line 155, sass/base/_bootstrap.scss */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/* line 158, sass/base/_bootstrap.scss */
+input[type="search"] {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-appearance: textfield;
+}
+
+/* line 165, sass/base/_bootstrap.scss */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/* line 168, sass/base/_bootstrap.scss */
+fieldset {
+  padding: .35em .625em .75em;
+  margin: 0 2px;
+  border: 1px solid #c0c0c0;
+}
+
+/* line 173, sass/base/_bootstrap.scss */
+legend {
+  padding: 0;
+  border: 0;
+}
+
+/* line 177, sass/base/_bootstrap.scss */
+textarea {
+  overflow: auto;
+}
+
+/* line 180, sass/base/_bootstrap.scss */
+optgroup {
+  font-weight: bold;
+}
+
+/* line 183, sass/base/_bootstrap.scss */
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+/* line 188, sass/base/_bootstrap.scss */
+td,
+th {
+  padding: 0;
+}
+
 /* line 1, sass/base/_base.scss */
 *, *:before, *:after {
   box-sizing: border-box;
@@ -12,29 +281,117 @@
 }
 
 /* line 16, sass/base/_base.scss */
-body {
-  font-family: Constantia, Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
-  background: #000;
-  font-weight: 400;
-  font-size: 15px;
-  color: #aa3e03;
-  overflow-y: scroll;
-  overflow-x: hidden;
+html {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
 }
 
-/* line 26, sass/base/_base.scss */
+/* line 21, sass/base/_base.scss */
+body {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  font-family: Constantia, Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+  background: #fff;
+  font-weight: 400;
+  font-size: 15px;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* line 33, sass/base/_base.scss */
+.page-content {
+  width: 100%;
+  height: 100%;
+  background: url("images/backgroud.jpg");
+  overflow: hidden;
+  animation: imageAnimation 3s linear;
+  animation-fill-mode: both;
+}
+
+/* line 44, sass/base/_base.scss */
 a, a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 31, sass/base/_base.scss */
+/* line 49, sass/base/_base.scss */
 li {
   list-style: none;
 }
 
-/* line 35, sass/base/_base.scss */
+/* line 53, sass/base/_base.scss */
 .container {
+  width: 1280px;
   z-index: 5000;
   overflow: hidden;
+}
+
+/* line 60, sass/base/_base.scss */
+.img-responsive {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* line 1, sass/layout/_header.scss */
+.header {
+  width: 100%;
+  height: 160px;
+  position: relative;
+}
+/* line 7, sass/layout/_header.scss */
+.header .logo {
+  width: 310px;
+  height: 55px;
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 40px;
+}
+
+/*@keyframes imageAnimation { 
+    0% {
+        opacity: 1;
+        animation-timing-function: ease-in;
+         transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1.0);
+    }
+}
+*/
+/* line 1, sass/layout/_navbar.scss */
+.navbar {
+  width: 960px;
+  height: 40px;
+  margin: 0 auto;
+  position: absolute;
+  top: 115px;
+  left: 0;
+  right: 0;
+}
+/* line 12, sass/layout/_navbar.scss */
+.navbar ul {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+/* line 17, sass/layout/_navbar.scss */
+.navbar ul li {
+  display: inline-block;
+  width: 150px;
+  height: 40px;
+  margin-right: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+/* line 1, sass/layout/_content.scss */
+.content {
+  width: 100%;
+  height: 540px;
+  background: blue;
 }
