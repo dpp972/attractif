@@ -93,7 +93,7 @@ class Client
     private $participations;
 
     public function __construct(){
-        parent::__construct();
+        /*parent::__construct();*/
         $this->evenements = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
