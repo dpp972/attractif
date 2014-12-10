@@ -1,0 +1,28 @@
+.marque { 
+    width: 33%;
+    height: 255px;
+    
+    border: 1px solid #56575a;
+
+    float: left;
+    
+    overflow: hidden;
+
+
+    .header-marque {
+        width: 350px;
+        height: 155px;
+
+        overflow: hidden;        
+    }
+
+    .description {
+        width: 100%;
+        padding: 25px;
+        
+        text-align: center;
+        font-size: 9px;
+        letter-spacing: 0.6px;
+    }
+
+}
