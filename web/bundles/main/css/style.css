@@ -273,63 +273,68 @@ th {
 }
 
 @font-face {
-  font-family: 'BebasNeueRegular';
-  src: url("fonts/BebasNeue-webfont.eot");
-  src: url("fonts/BebasNeue-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/BebasNeue-webfont.woff") format("woff"), url("fonts/BebasNeue-webfont.ttf") format("truetype"), url("fonts/BebasNeue-webfont.svg#BebasNeueRegular") format("svg");
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'Gill Sans';
+  src: url("fonts/Gill-Sans.ttc");
 }
 
-/* line 16, sass/base/_base.scss */
+@font-face {
+  font-family: 'Lato';
+  src: url("fonts/Lato-Regular.ttf");
+}
+
+/* line 14, sass/base/_base.scss */
 html {
   width: 100%;
   height: 100%;
   min-height: 100%;
 }
 
-/* line 21, sass/base/_base.scss */
+/* line 19, sass/base/_base.scss */
 body {
   width: 100%;
   height: 100%;
   min-height: 100%;
-  font-family: Constantia, Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+  font-family: "Lato";
   background: #000;
-  font-weight: 400;
-  font-size: 15px;
   color: #fff;
   overflow: hidden;
 }
 
-/* line 33, sass/base/_base.scss */
+/* line 29, sass/base/_base.scss */
 .page-content {
   width: 100%;
   height: 100%;
-  background: url("images/bg_espace.jpg") no-repeat fixed center;
+  background: url("images/backgroud.jpg") no-repeat fixed center;
   background-size: cover;
   overflow: hidden;
   animation: imageAnimation 3s linear;
   animation-fill-mode: both;
 }
 
-/* line 45, sass/base/_base.scss */
+/* line 41, sass/base/_base.scss */
 a, a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 50, sass/base/_base.scss */
+/* line 46, sass/base/_base.scss */
 li {
   list-style: none;
 }
 
-/* line 54, sass/base/_base.scss */
+/* line 50, sass/base/_base.scss */
 .container {
-  width: 1280px;
-  z-index: 5000;
-  overflow: hidden;
+  width: 1024px;
+  margin: 0 auto;
 }
 
-/* line 61, sass/base/_base.scss */
+@media screen and (max-width: 1024px) {
+  /* line 56, sass/base/_base.scss */
+  .container {
+    width: 100%;
+  }
+}
+/* line 62, sass/base/_base.scss */
 .img-responsive {
   display: block;
   width: 100%;
@@ -369,29 +374,134 @@ li {
   width: 960px;
   height: 40px;
   margin: 0 auto;
+  font-size: 10px;
+  letter-spacing: 1.5px;
   position: absolute;
   top: 115px;
   left: 0;
   right: 0;
 }
-/* line 12, sass/layout/_navbar.scss */
+/* line 15, sass/layout/_navbar.scss */
 .navbar ul {
   display: block;
   padding: 0;
   margin: 0;
 }
-/* line 17, sass/layout/_navbar.scss */
+/* line 20, sass/layout/_navbar.scss */
 .navbar ul li {
   display: inline-block;
   width: 150px;
   height: 40px;
-  margin-right: 40px;
+  margin-right: 42px;
   line-height: 40px;
   text-align: center;
+  text-transform: uppercase;
+}
+
+/* line 1, sass/layout/_footer.scss */
+.footer {
+  padding-top: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 8px;
+  letter-spacing: 1px;
 }
 
 /* line 1, sass/layout/_content.scss */
-.content {
+.page-vente {
   width: 100%;
-  height: 540px;
+  height: 370px;
+  margin-top: 20px;
+  border-top: 1px solid #56575a;
+  border-bottom: 1px solid #56575a;
+  position: relative;
+}
+/* line 12, sass/layout/_content.scss */
+.page-vente .header-page-vente {
+  height: 50px;
+  line-height: 50px;
+}
+/* line 17, sass/layout/_content.scss */
+.page-vente .header-page-vente .header-page-vente-container {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+/* line 25, sass/layout/_content.scss */
+.page-vente .header-page-vente .header-page-vente-container h1 {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 5px;
+  font-weight: normal;
+}
+/* line 36, sass/layout/_content.scss */
+.page-vente .header-page-vente .header-page-vente-container h1 .type-vente {
+  display: inline-block;
+  margin-right: 35px;
+}
+/* line 42, sass/layout/_content.scss */
+.page-vente .header-page-vente .header-page-vente-container .btn-inscription {
+  position: absolute;
+  left: 5px;
+  top: 10px;
+}
+/* line 47, sass/layout/_content.scss */
+.page-vente .header-page-vente .header-page-vente-container .btn-alerte {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+}
+@media screen and (max-width: 1150px) {
+  /* line 54, sass/layout/_content.scss */
+  .page-vente .header-page-vente .header-page-vente-container {
+    width: 100%;
+  }
+}
+/* line 61, sass/layout/_content.scss */
+.page-vente .page-vente-footer {
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+}
+
+/* line 1, sass/module/_marque.scss */
+.marque {
+  width: 33%;
+  height: 255px;
+  border: 1px solid #56575a;
+  float: left;
+  overflow: hidden;
+}
+/* line 12, sass/module/_marque.scss */
+.marque .header-marque {
+  width: 350px;
+  height: 155px;
+  overflow: hidden;
+}
+/* line 19, sass/module/_marque.scss */
+.marque .description {
+  width: 100%;
+  padding: 25px;
+  text-align: center;
+  font-size: 9px;
+  letter-spacing: 0.6px;
+}
+
+/* line 1, sass/module/_btn.scss */
+.btn {
+  width: 115px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #56575a;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 25px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  font-weight: normal;
+  cursor: pointer;
 }
