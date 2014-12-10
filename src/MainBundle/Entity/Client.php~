@@ -4,10 +4,12 @@ namespace MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Client
  *
  * @ORM\Table()
+ * 
  * @ORM\Entity(repositoryClass="MainBundle\Entity\ClientRepository")
  */
 class Client
@@ -79,12 +81,19 @@ class Client
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="Evenement", inversedBy="clients")
-     * @ORM\JoinTable(name="event_users")
+     * @ORM\ManyToMany(targetEntity="Evenement", inversedBy="inscrits")
+     * @ORM\JoinTable(name="event_user_inscription")
      */
-    private $evenements;
+    private $inscriptions;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Evenement", inversedBy="participants")
+     * @ORM\JoinTable(name="event_user_participation")
+     */
+    private $participations;
 
     public function __construct(){
+        parent::__construct();
         $this->evenements = new \Doctrine\Common\Collections\ArrayCollection();
     }
 

@@ -81,13 +81,13 @@ class Client
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="Evenement", inversedBy="clients")
+     * @ORM\ManyToMany(targetEntity="Evenement", inversedBy="inscrits")
      * @ORM\JoinTable(name="event_user_inscription")
      */
     private $inscriptions;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Evenement", inversedBy="clients")
+     * @ORM\ManyToMany(targetEntity="Evenement", inversedBy="participants")
      * @ORM\JoinTable(name="event_user_participation")
      */
     private $participations;
@@ -322,5 +322,71 @@ class Client
     public function getEvenements()
     {
         return $this->evenements;
+    }
+
+    /**
+     * Add inscriptions
+     *
+     * @param \MainBundle\Entity\Evenement $inscriptions
+     * @return Client
+     */
+    public function addInscription(\MainBundle\Entity\Evenement $inscriptions)
+    {
+        $this->inscriptions[] = $inscriptions;
+
+        return $this;
+    }
+
+    /**
+     * Remove inscriptions
+     *
+     * @param \MainBundle\Entity\Evenement $inscriptions
+     */
+    public function removeInscription(\MainBundle\Entity\Evenement $inscriptions)
+    {
+        $this->inscriptions->removeElement($inscriptions);
+    }
+
+    /**
+     * Get inscriptions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInscriptions()
+    {
+        return $this->inscriptions;
+    }
+
+    /**
+     * Add participations
+     *
+     * @param \MainBundle\Entity\Evenement $participations
+     * @return Client
+     */
+    public function addParticipation(\MainBundle\Entity\Evenement $participations)
+    {
+        $this->participations[] = $participations;
+
+        return $this;
+    }
+
+    /**
+     * Remove participations
+     *
+     * @param \MainBundle\Entity\Evenement $participations
+     */
+    public function removeParticipation(\MainBundle\Entity\Evenement $participations)
+    {
+        $this->participations->removeElement($participations);
+    }
+
+    /**
+     * Get participations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getParticipations()
+    {
+        return $this->participations;
     }
 }
