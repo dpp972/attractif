@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block css %}
-    <link rel="stylesheet" href="{{asset('bundles/frontoffice/css/style.css')}}" />
+    <link rel="stylesheet" href="{{asset('bundles/main/css/style.css')}}" />
 {% endblock %}
 
 {% block body %}
     <div class="page-content">
         <header class="header">
             <div class="logo">
-                <img src="{{asset('bundles/frontoffice/images/logo.png')}}" class="img-responsive">
+                <img src="{{asset('bundles/main/images/logo.png')}}" class="img-responsive">
             </div>
-            {% include 'FrontOfficeBundle:Default:nav.html.twig' %}
+            {% include 'MainBundle:Front:nav.html.twig' %}
         </header>
         <div class="content">
             {% block content %}
