@@ -1,16 +1,21 @@
-{% extends '::base.html.twig' %}
+{% extends 'MainBundle:Back:baseBack.html.twig' %}
+{% form_theme delete_form 'MainBundle:Form:fieldsDelete.html.twig' %}
+{% form_theme edit_form 'MainBundle:Form:fields.html.twig' %}
 
 {% block body -%}
+    <div style="width:40%;margin:auto">
     <h1>Home edit</h1>
 
     {{ form(edit_form) }}
+    <br>
+    {{ form(delete_form) }}
+    <br>
 
         <ul class="record_actions">
     <li>
         <a href="{{ path('homeAdmin') }}">
-            Back to the list
+           Retour à la liste
         </a>
     </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+</ul></div>
 {% endblock %}
