@@ -1,54 +1,57 @@
 {% extends 'MainBundle:Front:baseFront.html.twig' %}
 
 {% block content %}
-    <div class="page-vente">
-        
-            <div class='header-page-vente'>
-                <div class='header-page-vente-container'>
-                    <h1><span class='type-vente'>VENTE EN COURS</span> <span class='vente'>ouverture du mardi 09/12 7h au samedi 13/12 8h</span></h1> <!-- variable date de l'evenement -->
-                    <div class='btn btn-inscription'>Inscription</div>
-                    <div class='btn btn-alerte'>Alerte</div>
-                </div>
-            </div>
+    <section class="page-evenement">
 
-            <div class="marque">
-                <div class="header-marque">
-                    <img src="{{asset('bundles/main/images/evenement/apple.jpg')}}" class="img-responsive">
-                    <img class="logo-entreprise">
-                </div>
-                <div class="description">
-                    Apple est créée le 1er avril 1976 à Los Altos,<br>
-                    puis constituée sous forme de société le 3 janvier 1977.<br>
-                    Parmi les produits phares qu'a connu Apple depuis sa création<br>
-                    on trouve : l'Apple II, le Macintosh, l'iPod, l'iPhone et l'iPad.<br>
-                </div>
-            </div>
-            <div class="marque">
-                <div class="header-marque">
-                    <img src="{{asset('bundles/main/images/evenement/apple.jpg')}}" class="img-responsive">
-                    <img class="logo-entreprise">
-                </div>
-                <div class="description">
-                    Apple est créée le 1er avril 1976 à Los Altos,<br>
-                    puis constituée sous forme de société le 3 janvier 1977.<br>
-                    Parmi les produits phares qu'a connu Apple depuis sa création<br>
-                    on trouve : l'Apple II, le Macintosh, l'iPod, l'iPhone et l'iPad.<br>
-                </div>
-            </div>
-            <div class="marque">
-                <div class="header-marque">
-                    <img src="{{asset('bundles/main/images/evenement/apple.jpg')}}" class="img-responsive">
-                    <img class="logo-entreprise">
-                </div>
-                <div class="description">
-                    Apple est créée le 1er avril 1976 à Los Altos,<br>
-                    puis constituée sous forme de société le 3 janvier 1977.<br>
-                    Parmi les produits phares qu'a connu Apple depuis sa création<br>
-                    on trouve : l'Apple II, le Macintosh, l'iPod, l'iPhone et l'iPad.<br>
-                </div>
-            </div>
-            <div class='page-vente-footer'>
-                <img src="{{asset('bundles/main/images/evenement/les-logos.png')}}" class="img-responsive">
+        <div class='header-page-evenement'>
+            <div class='header-page-evenement-container'>
+                <h1><span class='type-evenement'>VENTE EN COURS</span> <span class='evenement'>ouverture du mardi 09/12 7h au samedi 13/12 8h</span></h1> <!-- variable date de l'evenement -->
+                <div class='btn btn-inscription'>Inscription</div>
+                <div class='btn btn-alerte'>Alerte</div>
             </div>
         </div>
+        <div class="slider-marque">
+            <i class="btn-slider-left fa fa-chevron-left"></i>
+            <div class="marque">
+                <div class="header-marque">
+                    <img src="{{asset('bundles/main/images/evenement/apple.jpg')}}" class="img-responsive">
+                    <img class="logo-entreprise">
+                </div>
+                <div class="description">
+                    Apple est créée le 1er avril 1976 à Los Altos,<br>
+                    puis constituée sous forme de société le 3 janvier 1977.<br>
+                    Parmi les produits phares qu'a connu Apple depuis sa création<br>
+                    on trouve : l'Apple II, le Macintosh, l'iPod, l'iPhone et l'iPad.<br>
+                </div>
+            </div>
+            <div class="marque">
+                <div class="header-marque">
+                    <img src="{{asset('bundles/main/images/evenement/apple.jpg')}}" class="img-responsive">
+                    <img class="logo-entreprise">
+                </div>
+                <div class="description">
+                    Apple est créée le 1er avril 1976 à Los Altos,<br>
+                    puis constituée sous forme de société le 3 janvier 1977.<br>
+                    Parmi les produits phares qu'a connu Apple depuis sa création<br>
+                    on trouve : l'Apple II, le Macintosh, l'iPod, l'iPhone et l'iPad.<br>
+                </div>
+            </div>
+            <div class="marque">
+                <div class="header-marque">
+                    <img src="{{asset('bundles/main/images/evenement/apple.jpg')}}" class="img-responsive">
+                    <img class="logo-entreprise">
+                </div>
+                <div class="description">
+                    Apple est créée le 1er avril 1976 à Los Altos,<br>
+                    puis constituée sous forme de société le 3 janvier 1977.<br>
+                    Parmi les produits phares qu'a connu Apple depuis sa création<br>
+                    on trouve : l'Apple II, le Macintosh, l'iPod, l'iPhone et l'iPad.<br>
+                </div>
+            </div>
+            <i class="btn-slider-right fa fa-chevron-right"></i>
+        </div>
+        <div class='page-evenement-footer'>
+            <img src="{{asset('bundles/main/images/evenement/les-logos.png')}}" class="img-responsive">
+        </div>
+    </section>
 {% endblock %}
