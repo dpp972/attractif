@@ -240,4 +240,70 @@ class Evenement
     {
         return $this->clients;
     }
+
+    /**
+     * Add inscrits
+     *
+     * @param \MainBundle\Entity\Client $inscrits
+     * @return Evenement
+     */
+    public function addInscrit(\MainBundle\Entity\Client $inscrits)
+    {
+        $this->inscrits[] = $inscrits;
+
+        return $this;
+    }
+
+    /**
+     * Remove inscrits
+     *
+     * @param \MainBundle\Entity\Client $inscrits
+     */
+    public function removeInscrit(\MainBundle\Entity\Client $inscrits)
+    {
+        $this->inscrits->removeElement($inscrits);
+    }
+
+    /**
+     * Get inscrits
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInscrits()
+    {
+        return $this->inscrits;
+    }
+
+    /**
+     * Add participants
+     *
+     * @param \MainBundle\Entity\Client $participants
+     * @return Evenement
+     */
+    public function addParticipant(\MainBundle\Entity\Client $participants)
+    {
+        $this->participants[] = $participants;
+
+        return $this;
+    }
+
+    /**
+     * Remove participants
+     *
+     * @param \MainBundle\Entity\Client $participants
+     */
+    public function removeParticipant(\MainBundle\Entity\Client $participants)
+    {
+        $this->participants->removeElement($participants);
+    }
+
+    /**
+     * Get participants
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getParticipants()
+    {
+        return $this->participants;
+    }
 }
