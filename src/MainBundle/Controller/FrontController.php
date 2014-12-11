@@ -37,9 +37,7 @@ class FrontController extends Controller
             ->find(1);
 
         if (!$infos) {
-            throw $this->createNotFoundException(
-                'L\'utilisateur n\'a pas été trouvé'
-            );
+            $this->get('session')->getFlashBag()->add('error', 'L\'utilisateur n\'a pas été trouvé');
         }   
         
         return $this->render('MainBundle:Front:quiSommesNous.html.twig', array( 'infos' => $infos));
@@ -56,9 +54,7 @@ class FrontController extends Controller
             ->findAll();
 
         if (!$events) {
-            throw $this->createNotFoundException(
-                'Aucune vente privée n\'a été trouvé' 
-            );
+            $this->get('session')->getFlashBag()->add('error', 'Aucun évenement n\'est enregistré');
         }
         
         return $this->render('MainBundle:Front:rendezVous.html.twig', array( 'events' => $events));
@@ -70,16 +66,14 @@ class FrontController extends Controller
      */
     public function alertsAction()
     {
-        $events = $this->getDoctrine()
-            ->getRepository('MainBundle:Evenement')
+        $alerts = $this->getDoctrine()
+            ->getRepository('MainBundle:Entreprise')
             ->findAll();
 
-        if (!$events) {
-            throw $this->createNotFoundException(
-                'Aucune vente privée n\'a été trouvé' 
-            );
+        if (!$alerts) {
+            $this->get('session')->getFlashBag()->add('error', 'Aucune alerte n\'a été parametré');
         }        
-        return $this->render('MainBundle:Front:alerts.html.twig'/*, array( 'events' => $events)*/);
+        return $this->render('MainBundle:Front:alerts.html.twig', array( 'alerts' => $alerts));
     }      
     
     /**
@@ -107,9 +101,7 @@ class FrontController extends Controller
             ->find(1);
 
         if (!$infos) {
-            throw $this->createNotFoundException(
-                'L\'utilisateur n\'a pas été trouvé'
-            );
+            $this->get('session')->getFlashBag()->add('error', 'L\'utilisateur n\'a pas été trouvé');
         }   
         
         return $this->render('MainBundle:Front:contact.html.twig', array( 'infos' => $infos));

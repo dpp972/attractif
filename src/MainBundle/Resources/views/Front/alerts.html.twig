@@ -1,5 +1,16 @@
 {% extends 'MainBundle:Front:baseFront.html.twig' %}
 
 {% block content %}
-
+    <h1>Alertes</h1>
+    <p>Voici la liste de sociétés partenaires, veuillez sélectionner les 
+        entreprises que vous désirez suivre.</p>
+    
+    <form action="{{path('alerts')}}" method="post">
+        {% for alert in alerts %}
+            <input type="checkbox" value="{{ alert.libelle }}" name="alert"> {{ alert.libelle }}<br />
+        {% endfor %}
+            <br />
+        <input style="color:#000;" type="submit" value="enregistrer">
+    </form>
+    {#{ dump(alerts) }#}
 {% endblock %}
