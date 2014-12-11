@@ -2,6 +2,8 @@
 
 namespace MainBundle\Controller;
 
+
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -10,21 +12,76 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class FrontController extends Controller
 {
     /**
+     * @Route("/home/todo", name="todo")
+     * @Template()
+     */
+    public function homeTodoAction(Request $request)
+    {
+        $repo = $this->getDoctrine()
+            ->getRepository('MainBundle:Evenement');
+        
+        $query = $repo->createQueryBuilder('p')
+            ->where('p.dateDeb > CURRENT_DATE()')
+            ->orderBy('p.dateDeb', 'ASC')
+            ->getQuery();
+
+        $events = $query->getResult();
+        
+        
+        if (!$events) {
+            $this->get('session')->getFlashBag()->add('error', 'Il n\'y a pas d\'évenement pour cette période');
+        }
+        
+        return $this->render('MainBundle:Front:home.html.twig', array('events' => $events));        
+    }
+ 
+    /**
+     * @Route("/home/done", name="done")
+     * @Template()
+     */
+    public function homeDoneAction(Request $request)
+    {
+        $repo = $this->getDoctrine()
+            ->getRepository('MainBundle:Evenement');
+        
+        $query = $repo->createQueryBuilder('p')
+            ->where('p.dateFin > :now') 
+            ->setParameter('now', new \DateTime('now'))
+            ->orderBy('p.dateFin', 'DESC')
+            ->getQuery();
+
+        $events = $query->getResult();
+        
+        
+        if (!$events) {
+            $this->get('session')->getFlashBag()->add('error', 'Il n\'y a pas d\'évenement pour cette période');
+        }
+        
+        return $this->render('MainBundle:Front:home.html.twig', array('events' => $events));
+    }    
+    
+    
+    /**
      * @Route("/", name="home")
      * @Template()
      */
-    public function homeAction()
+    public function homeAction(Request $request)
     {
-        $events = $this->getDoctrine()
-            ->getRepository('MainBundle:Evenement')
-            ->findAll();
+        $repo = $this->getDoctrine()
+            ->getRepository('MainBundle:Evenement');
+        
+        $query = $repo->createQueryBuilder('p')
+            ->where('p.dateFin >= NOW()')    /* 0 = now () */
+            ->andWhere('p.dateDeb <= NOW()') /* 0 = now () */          
+            ->orderBy('p.dateFin', 'DESC')
+            ->getQuery();
+
+        $events = $query->getResult();
 
         if (!$events) {
-            $this->get('session')->getFlashBag()->add('error', 'Pas d\'enregistrement');
+            $this->get('session')->getFlashBag()->add('error', 'Il n\'y a pas d\'évenement pour cette période');
         }
-        //$this->get('session')->getFlashBag()->add('success', 'Enregistrement');
-        
-        return $this->render('MainBundle:Front:home.html.twig', array( 'events' => $events));
+        return $this->render('MainBundle:Front:home.html.twig', array('events' => $events));
     }
     
     /**
@@ -119,9 +176,7 @@ class FrontController extends Controller
         $user = $this->getDoctrine()
             ->getRepository('MainBundle:Client')
             ->find(1);
-        
-        //$this->get('session')->getFlashBag()->add('success', 'L\'alerte evenement a bien été enregistré');
-        
+                
         return $this->redirect($this->generateUrl('home'));
     }
     
@@ -134,10 +189,7 @@ class FrontController extends Controller
         $user = $this->getDoctrine()
             ->getRepository('MainBundle:Client')
             ->find(1);
-        
-        
-        //$this->get('session')->getFlashBag()->add('success', 'L\'alerte par marque a bien été enregistré');
-        
+                
         return $this->redirect($this->generateUrl('home'));
     }          
 }
