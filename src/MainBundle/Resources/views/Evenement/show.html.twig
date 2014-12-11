@@ -1,9 +1,10 @@
-{% extends '::base.html.twig' %}
+{% extends 'MainBundle:Back:baseBack.html.twig' %}
 
 {% block body -%}
+<div class="page" style="width:80%;margin:auto">
     <h1>Evenement</h1>
 
-    <table class="record_properties">
+    <table class="record_properties table table-striped">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -41,4 +42,5 @@
     </li>
     <li>{{ form(delete_form) }}</li>
 </ul>
+</div>
 {% endblock %}

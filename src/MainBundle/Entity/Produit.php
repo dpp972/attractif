@@ -206,4 +206,5 @@ class Produit
     {
         return $this->entreprise;
     }
+
 }
