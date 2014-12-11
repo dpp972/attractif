@@ -1,1 +1,7 @@
-Hello Admin !
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<a href="{{ url('client') }}">Client</a>
+<a href="{{ url('evenement') }}">Evenement</a>
+<a href="{{ url('produit') }}">Produit</a>
+{% endblock  %}

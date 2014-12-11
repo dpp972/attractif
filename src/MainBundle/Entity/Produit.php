@@ -2,6 +2,7 @@
 
 namespace MainBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,8 +38,8 @@ class Produit
 
 
     /**
-     * ORM\ManyToOne(targetEntity="Entreprise", inversedBy="produits")
-     * ORM\JoinColumn(name="entreprise_produit", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Entreprise", inversedBy="produits")
+     * @ORM\JoinColumn(name="idEntreprise", referencedColumnName="id")
      */
     protected $entreprise;
 
@@ -57,8 +58,8 @@ class Produit
 
 
     public function __construct(){
-        $this->category = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->evenements = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->category = new ArrayCollection();
+        $this->evenements = new ArrayCollection();
     }
 
     /**
@@ -181,5 +182,28 @@ class Produit
     public function getEvenements()
     {
         return $this->evenements;
+    }
+
+    /**
+     * Set entreprise
+     *
+     * @param \MainBundle\Entity\Entreprise $entreprise
+     * @return Produit
+     */
+    public function setEntreprise(\MainBundle\Entity\Entreprise $entreprise = null)
+    {
+        $this->entreprise = $entreprise;
+
+        return $this;
+    }
+
+    /**
+     * Get entreprise
+     *
+     * @return \MainBundle\Entity\Entreprise 
+     */
+    public function getEntreprise()
+    {
+        return $this->entreprise;
     }
 }
