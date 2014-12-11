@@ -120,9 +120,7 @@ class FrontController extends Controller
             ->getRepository('MainBundle:Client')
             ->find(1);
         
-        $this->get('session')->getFlashBag()->add('success', 'L\'alerte evenement a bien été enregistré');
-        
-        $inscriptions = $user->setInscriptions();
+        //$this->get('session')->getFlashBag()->add('success', 'L\'alerte evenement a bien été enregistré');
         
         return $this->redirect($this->generateUrl('home'));
     }
@@ -138,7 +136,7 @@ class FrontController extends Controller
             ->find(1);
         
         
-        $this->get('session')->getFlashBag()->add('success', 'L\'alerte par marque a bien été enregistré');
+        //$this->get('session')->getFlashBag()->add('success', 'L\'alerte par marque a bien été enregistré');
         
         return $this->redirect($this->generateUrl('home'));
     }          
