@@ -2,7 +2,7 @@
 
 {% block body -%}
 <div class="page" style="width:80%;margin:auto">
-    <h1>Evenement list</h1>
+    <h1 style="text-decoration: underline">Evenement list</h1><br>
 
     <table class="records_list table table-striped">
         <thead>
@@ -26,10 +26,10 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('evenement_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('evenement_show', { 'id': entity.id }) }}">Voir</a>
                     </li>
                     <li>
-                        <a href="{{ path('evenement_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('evenement_edit', { 'id': entity.id }) }}">Editer</a>
                     </li>
                 </ul>
                 </td>
@@ -41,7 +41,7 @@
         <ul>
         <li>
             <a href="{{ path('evenement_new') }}">
-                Create a new entry
+                Créer un nouvel évènement
             </a>
         </li>
     </ul>

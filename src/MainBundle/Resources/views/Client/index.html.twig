@@ -2,7 +2,7 @@
 
 {% block body -%}
     <div class="page" style="width:80%;margin:auto">
-    <h1>Client list</h1>
+    <h1 style="text-decoration:underline">Liste client</h1><br>
 
     <table class="records_list table table-striped">
         <thead>
@@ -34,10 +34,10 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('client_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('client_show', { 'id': entity.id }) }}">Voir</a>
                     </li>
                     <li>
-                        <a href="{{ path('client_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('client_edit', { 'id': entity.id }) }}">Editer</a>
                     </li>
                 </ul>
                 </td>
@@ -49,7 +49,7 @@
         <ul>
         <li>
             <a href="{{ path('client_new') }}">
-                Create a new entry
+                Créer un nouveau client
             </a>
         </li>
     </ul>
