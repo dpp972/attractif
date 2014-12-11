@@ -9,6 +9,13 @@
         <div class='container'>
             {% include 'MainBundle:Front:nav.html.twig' %}
             
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <p>{{ flashMessage  }}</p>
+                {% endfor %}
+                {% for flashMessage in app.session.flashbag.get('error') %}
+                    <p>{{ flashMessage  }}</p>
+                {% endfor %}
+                    
             {% block content %}{% endblock %}
             
             {% include 'MainBundle:Front:footer.html.twig' %}
