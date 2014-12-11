@@ -50,8 +50,8 @@ class FrontController extends Controller
     public function rendezVousAction()
     {
         $events = $this->getDoctrine()
-            ->getRepository('MainBundle:Evenement')
-            ->findAll();
+            ->getRepository('MainBundle:Client')
+            ->find(1);
 
         if (!$events) {
             $this->get('session')->getFlashBag()->add('error', 'Aucun évenement n\'est enregistré');
@@ -70,10 +70,18 @@ class FrontController extends Controller
             ->getRepository('MainBundle:Entreprise')
             ->findAll();
 
+        $cats = $this->getDoctrine()
+            ->getRepository('MainBundle:Categorie')
+            ->findAll();
+        
         if (!$alerts) {
             $this->get('session')->getFlashBag()->add('error', 'Aucune alerte n\'a été parametré');
-        }        
-        return $this->render('MainBundle:Front:alerts.html.twig', array( 'alerts' => $alerts));
+        }
+        if (!$cats) {
+            $this->get('session')->getFlashBag()->add('error', 'Aucune catégorie n\'a été parametré');
+        }
+        
+        return $this->render('MainBundle:Front:alerts.html.twig', array( 'alerts' => $alerts, 'cats' => $cats));
     }      
     
     /**

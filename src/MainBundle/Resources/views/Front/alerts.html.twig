@@ -2,6 +2,8 @@
 
 {% block content %}
     <h1>Alertes</h1>
+    
+    <h3>Par Entreprise</h3>
     <p>Voici la liste de sociétés partenaires, veuillez sélectionner les 
         entreprises que vous désirez suivre.</p>
     
@@ -12,5 +14,16 @@
             <br />
         <input style="color:#000;" type="submit" value="enregistrer">
     </form>
-    {#{ dump(alerts) }#}
+
+    <h3>Par Catégorie</h3>
+    <p>Voici la liste de sociétés partenaires, veuillez sélectionner les 
+        entreprises que vous désirez suivre.</p>
+    
+    <form action="{{path('alerts')}}" method="post">
+        {% for cat in cats %}
+            <input type="checkbox" value="{{ cat.libelle }}" name="alert"> {{ cat.libelle }}<br />
+        {% endfor %}
+            <br />
+        <input style="color:#000;" type="submit" value="enregistrer">
+    </form>    
 {% endblock %}
