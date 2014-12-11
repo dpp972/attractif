@@ -67,12 +67,13 @@ $(function () {
     });
 });
 
+
 $('.insc').on('click', function(e){
     e.preventDefault;
     $('form').fadeOut();
     $('section').fadeOut();
-    $('.form-inscription').velocity('fadeIn', {duration: 500});
-    console.log('plop');
+    $('.form-inscription').velocity('fadeIn');  
+    
 });
 
 $('.log').click(function (e) {
