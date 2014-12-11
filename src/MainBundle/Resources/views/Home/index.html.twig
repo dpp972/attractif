@@ -1,9 +1,10 @@
-{% extends '::base.html.twig' %}
+{% extends 'MainBundle:Back:baseBack.html.twig' %}
 
 {% block body -%}
-    <h1>Home list</h1>
+<div style="width:80%;margin:auto;text-align:center;padding-top:60px">
+    <h1 style="text-decoration:underline">Home liste</h1><br>
 
-    <table class="records_list">
+    <table class="records_list table table-striped">
         <thead>
             <tr>
                 <th>Id</th>
@@ -29,10 +30,10 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('home_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('home_show', { 'id': entity.id }) }}">Voir</a>
                     </li>
                     <li>
-                        <a href="{{ path('home_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('home_edit', { 'id': entity.id }) }}">Editer</a>
                     </li>
                 </ul>
                 </td>
@@ -50,4 +51,5 @@
             </a>
         </li>
     </ul-->
+</div>
     {% endblock %}

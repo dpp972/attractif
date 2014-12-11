@@ -1,9 +1,11 @@
-{% extends '::base.html.twig' %}
+{% extends 'MainBundle:Back:baseBack.html.twig' %}
+{% form_theme delete_form 'MainBundle:Form:fieldsDelete.html.twig' %}
 
 {% block body -%}
+<div style="width:80%;margin:auto;padding-top:60px">
     <h1>Home</h1>
 
-    <table class="record_properties">
+    <table class="record_properties table table-striped">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -34,19 +36,21 @@
                 <td>{{ entity.presentation }}</td>
             </tr>
         </tbody>
-    </table>
+    </table><br>
+    {{ form(delete_form) }}
+    <br>
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('home') }}">
-            Back to the list
+        <a href="{{ path('homeAdmin') }}">
+           Retour à la liste
         </a>
     </li>
     <li>
         <a href="{{ path('home_edit', { 'id': entity.id }) }}">
-            Edit
+            Editer
         </a>
     </li>
-    <li>{{ form(delete_form) }}</li>
 </ul>
+    </div>
 {% endblock %}
