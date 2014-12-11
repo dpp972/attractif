@@ -4,6 +4,7 @@ namespace MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class FrontController extends Controller
@@ -69,19 +70,12 @@ class FrontController extends Controller
         $alerts = $this->getDoctrine()
             ->getRepository('MainBundle:Entreprise')
             ->findAll();
-
-        $cats = $this->getDoctrine()
-            ->getRepository('MainBundle:Categorie')
-            ->findAll();
         
         if (!$alerts) {
             $this->get('session')->getFlashBag()->add('error', 'Aucune alerte n\'a été parametré');
         }
-        if (!$cats) {
-            $this->get('session')->getFlashBag()->add('error', 'Aucune catégorie n\'a été parametré');
-        }
         
-        return $this->render('MainBundle:Front:alerts.html.twig', array( 'alerts' => $alerts, 'cats' => $cats));
+        return $this->render('MainBundle:Front:alerts.html.twig', array( 'alerts' => $alerts ));
     }      
     
     /**
@@ -106,12 +100,43 @@ class FrontController extends Controller
         
         $infos = $this->getDoctrine()
             ->getRepository('MainBundle:Home')
-            ->find(1);
-
+            ->find(1);        
+        
         if (!$infos) {
             $this->get('session')->getFlashBag()->add('error', 'L\'utilisateur n\'a pas été trouvé');
         }   
         
         return $this->render('MainBundle:Front:contact.html.twig', array( 'infos' => $infos));
-    }       
+    }  
+    
+    
+    /**
+     * @Route("subscribe/{id}", name="subscribe")
+     * @Method("get")
+     */
+    public function subscribeAction()
+    {
+        $user = $this->getDoctrine()
+            ->getRepository('MainBundle:Client')
+            ->find(1);
+        
+        $this->get('session')->getFlashBag()->add('success', 'L\'alerte evenement a bien été enregistré');
+        
+        return $this->redirect($this->generateUrl('home'));
+    }
+    
+    /**
+     * @Route("addAlert/{id}", name="addAlerts")
+     * @Method("get")
+     */
+    public function addAlertAction()
+    {
+        $user = $this->getDoctrine()
+            ->getRepository('MainBundle:Client')
+            ->find(1);
+        
+        $this->get('session')->getFlashBag()->add('success', 'L\'alerte par marque a bien été enregistré');
+        
+        return $this->redirect($this->generateUrl('home'));
+    }          
 }
