@@ -1,5 +1,5 @@
 .marque { 
-    width: 33%;
+    width: 308px;
     height: 255px;
     
     border: 1px solid #56575a;
@@ -13,16 +13,28 @@
         width: 350px;
         height: 155px;
 
-        overflow: hidden;        
+        overflow: hidden;
+        
+        .img {
+            vertical-align: middle;
+        }
     }
 
     .description {
         width: 100%;
+        height: 75px;
         padding: 25px;
         
         text-align: center;
         font-size: 9px;
         letter-spacing: 0.6px;
+        
+        overflow: hidden;
     }
 
+}
+
+.marque:nth-child(2n+1){
+    border-left: none;
+    border-right: none;
 }

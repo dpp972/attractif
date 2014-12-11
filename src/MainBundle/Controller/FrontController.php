@@ -14,7 +14,17 @@ class FrontController extends Controller
      */
     public function homeAction()
     {
-        return $this->render('MainBundle:Front:home.html.twig'/*, array( 'events' => $events)*/);
+        $events = $this->getDoctrine()
+            ->getRepository('MainBundle:Evenement')
+            ->findAll();
+
+        if (!$events) {
+            throw $this->createNotFoundException(
+                'Aucune vente privée n\'a été trouvé' 
+            );
+        }
+        
+        return $this->render('MainBundle:Front:home.html.twig', array( 'events' => $events));
     }
     
     /**
@@ -40,7 +50,7 @@ class FrontController extends Controller
             throw $this->createNotFoundException(
                 'Aucune vente privée n\'a été trouvé' 
             );
-        }        
+        }
         
         return $this->render('MainBundle:Front:rendezVous.html.twig', array( 'events' => $events));
     }    
@@ -51,6 +61,15 @@ class FrontController extends Controller
      */
     public function alertsAction()
     {
+        $events = $this->getDoctrine()
+            ->getRepository('MainBundle:Evenement')
+            ->findAll();
+
+        if (!$events) {
+            throw $this->createNotFoundException(
+                'Aucune vente privée n\'a été trouvé' 
+            );
+        }        
         return $this->render('MainBundle:Front:alerts.html.twig'/*, array( 'events' => $events)*/);
     }      
     
@@ -67,8 +86,9 @@ class FrontController extends Controller
      * @Route("/contact", name="contact")
      * @Template()
      */
-    public function contactAction()
-    {
+    public function contactAction(){
+        
+        
         return $this->render('MainBundle:Front:contact.html.twig'/*, array( 'events' => $events)*/);
     }       
 }

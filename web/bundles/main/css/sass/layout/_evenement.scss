@@ -1,7 +1,7 @@
-.page-vente {
+.page-evenement {
     width: 100%;
-    height: 370px;
-    
+    height: 340px;
+
     margin-top: 20px;
 
     border-top: 1px solid #56575a;
@@ -9,17 +9,17 @@
 
     position: relative;
 
-    .header-page-vente {
+    .header-page-evenement {
 
         height: 50px;
         line-height: 50px;
 
-        .header-page-vente-container{
+        .header-page-evenement-container{
             width: 100%;
             height: 100%;
 
             margin: 0 auto;
-            
+
             position: relative;
 
             h1 {
@@ -33,36 +33,72 @@
                 font-weight: normal;
 
 
-                .type-vente {
+                .type-evenement {
                     display: inline-block;
                     margin-right: 35px;
                 }
             }
-            
+
             .btn-inscription {
                 position: absolute;
-                left: 5px;
+                left: 0px;
                 top: 10px;
             }
             .btn-alerte {
                 position: absolute;
-                right: 5px;
+                right: 0px;
                 top: 10px;
             }
         }
         @media screen and (max-width: 1150px) {
-            .header-page-vente-container{
+            .header-page-evenement-container{
                 width: 100%;
             }
         }
 
 
     }
-    .page-vente-footer {
+
+    .slider-marque {
+        width: 100%;
+        height: 255px;
+
+        padding: 0 50px;
+
+        position: relative;
+        overflow: hidden;
+
+        .btn-slider-left {
+            position: absolute;
+            top: 125px;
+            left: 10px;
+
+            cursor: pointer;
+            opacity: 0.6;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+        .btn-slider-right {
+            position: absolute;
+            top: 125px;
+            right: 10px;
+
+            cursor: pointer;
+            opacity: 0.6;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    .page-evenement-footer {
         height: 40px;
-        
+
         position: absolute;
-        bottom: 0;
+        bottom: -2px;
     }
 
 }
