@@ -2,12 +2,22 @@
 
 {% block content %}
     <section class="page-evenement">
-        {{ dump(events) }}
+
+        {# dump(events) #}
         <div class='header-page-evenement'>
             <div class='header-page-evenement-container'>
-                <span class='type-evenement'>VENTE EN COURS <i class="icon fa fa-sort-desc"></i></span> 
-                <h1><span class='evenement'>du mardi 09/12 7h au samedi 13/12 8h <i class="icon fa fa-sort-desc"></i></span></h1> <!-- variable date de l'evenement -->
-                <div class='btn btn-inscription'>Inscription</div>
+                <ul class='type-evenement'>
+                    <li><a href='#'>VENTE EN COURS <i class="type-eve-icon fa fa-sort-desc"></i></a></li> 
+                    <li><a href='#'>VENTE A VENIR</a></li>
+                    <li><a href='#'>VENTE TERMINEE</a></li>
+                </ul>
+                <ul class='evenement'>
+                    <li><a href='#'>du mardi 09/12 7h au samedi 13/12 8h <i class="icon-date fa fa-sort-desc"></i></a></li> 
+                    <li><a href='#'>du mardi 09/12 7h au samedi 13/12 8h</a></li>
+                    <li><a href='#'>du mardi 09/12 7h au samedi 13/12 8h</a></li>
+                </ul>
+                <div class='btn btn-inscription'><a href="{{ path('subscribe', { 'id': 1 })}}">Inscription</a></div>
+
             </div>
         </div>
         <div class="slider-marque">
@@ -20,7 +30,7 @@
                             <img src="{{asset('bundles/main/images/evenement/apple-contenu.jpg')}}" class="img-responsive">
                             <img class="logo-entreprise">
                         </div>
-                        <div class='btn btn-alerte'>Alerte</div>
+                        <div class='btn btn-alerte'><a href="{{ path('addAlerts', { 'id': 1 })}}" >Alerte</a></div>
                         <div class="description">
                             Apple est créée le 1er avril 1976 à Los Altos,<br>
                             puis constituée sous forme de société le 3 janvier 1977.<br>
@@ -33,7 +43,7 @@
                             <img src="{{asset('bundles/main/images/evenement/samsung-contenu.jpg')}}" class="img-responsive">
                             <img class="logo-entreprise">
                         </div>
-                        <div class='btn btn-alerte'>Alerte</div>
+                        <div class='btn btn-alerte'><a href="{{ path('addAlerts', { 'id': 2 })}}" >Alerte</a></div>
                         <div class="description">
                             Apple est créée le 1er avril 1976 à Los Altos,<br>
                             puis constituée sous forme de société le 3 janvier 1977.<br>
@@ -46,7 +56,7 @@
                             <img src="{{asset('bundles/main/images/evenement/sony-contenu.jpg')}}" class="img-responsive">
                             <img class="logo-entreprise">
                         </div>
-                        <div class='btn btn-alerte'>Alerte</div>
+                        <div class='btn btn-alerte'><a href="{{ path('addAlerts', { 'id': 3 })}}" >Alerte</a></div>
                         <div class="description">
                             Apple est créée le 1er avril 1976 à Los Altos,<br>
                             puis constituée sous forme de société le 3 janvier 1977.<br>
@@ -59,7 +69,7 @@
                             <img src="{{asset('bundles/main/images/evenement/samsung-contenu.jpg')}}" class="img-responsive">
                             <img class="logo-entreprise">
                         </div>
-                        <div class='btn btn-alerte'>Alerte</div>
+                        <div class='btn btn-alerte'><a href="{{ path('addAlerts', { 'id': 4 })}}" >Alerte</a></div>
                         <div class="description">
                             Apple est créée le 1er avril 1976 à Los Altos,<br>
                             puis constituée sous forme de société le 3 janvier 1977.<br>
@@ -72,7 +82,7 @@
                             <img src="{{asset('bundles/main/images/evenement/sony-contenu.jpg')}}" class="img-responsive">
                             <img class="logo-entreprise">
                         </div>
-                        <div class='btn btn-alerte'>Alerte</div>
+                        <div class='btn btn-alerte'><a href="{{ path('addAlerts', { 'id': 5 })}}" >Alerte</a></div>
                         <div class="description">
                             Apple est créée le 1er avril 1976 à Los Altos,<br>
                             puis constituée sous forme de société le 3 janvier 1977.<br>

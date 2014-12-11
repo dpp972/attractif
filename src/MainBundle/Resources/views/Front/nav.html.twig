@@ -4,13 +4,15 @@
             <img src="{{asset('bundles/main/images/logo.png')}}" class="img-responsive" />
         </a>
     </div>
+        <a class="insc" href='#'>Inscription</a>
+        <a class="log" href='#'>Se connecter</a>
     <nav class="navbar">
         <ul>    <!-- Petit tricks pour l'espace insécable entre les LI --> 
-            <li><a{% if app.request.attributes.get('_route') == 'about' %} class="current"{% endif %} href="{{path('about')}}">Qui sommes nous?</a></li><!--
+            <li><a{% if app.request.attributes.get('_route') == 'home' %} class="current"{% endif %} href="{{path('home')}}">Les évenements</a></li><!--
          --><li><a{% if app.request.attributes.get('_route') == 'meetings' %} class="current"{% endif %} href="{{path('meetings')}}">Mes rendez-vous</a></li><!--
          --><li><a{% if app.request.attributes.get('_route') == 'alerts' %} class="current"{% endif %} href="{{path('alerts')}}">Mes alertes</a></li><!--
          --><li><a{% if app.request.attributes.get('_route') == 'account' %} class="current"{% endif %} href="{{path('account')}}">Mon compte</a></li><!--
-         --><li><a{% if app.request.attributes.get('_route') == 'contact' %} class="current"{% endif %} href="{{path('contact')}}">Aide & Contact</a></li>
+         --><li><a{% if app.request.attributes.get('_route') == 'contact' %} class="current"{% endif %} href="{{path('contact')}}">Qui sommes nous?</a></li>
         </ul>
     </nav>
 </header>    
