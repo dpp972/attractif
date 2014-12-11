@@ -9,12 +9,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class FrontController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="home")
      * @Template()
      */
-    public function indexAction()
+    public function homeAction()
     {
-        return array();
+        return $this->render('MainBundle:Front:home.html.twig'/*, array( 'events' => $events)*/);
     }
     
     /**
@@ -23,7 +23,7 @@ class FrontController extends Controller
      */
     public function quiSommesNousAction()
     {
-        return array();
+        return $this->render('MainBundle:Front:quiSommesNous.html.twig'/*, array( 'events' => $events)*/);
     }
     
     /**
@@ -32,7 +32,17 @@ class FrontController extends Controller
      */
     public function rendezVousAction()
     {
-        return array();
+        $events = $this->getDoctrine()
+            ->getRepository('MainBundle:Evenement')
+            ->findAll();
+
+        if (!$events) {
+            throw $this->createNotFoundException(
+                'Aucune vente privée n\'a été trouvé' 
+            );
+        }        
+        
+        return $this->render('MainBundle:Front:rendezVous.html.twig', array( 'events' => $events));
     }    
 
     /**
@@ -41,7 +51,7 @@ class FrontController extends Controller
      */
     public function alertsAction()
     {
-        return array();
+        return $this->render('MainBundle:Front:alerts.html.twig'/*, array( 'events' => $events)*/);
     }      
     
     /**
@@ -50,7 +60,7 @@ class FrontController extends Controller
      */
     public function accountAction()
     {
-        return array();
+        return $this->render('MainBundle:Front:account.html.twig'/*, array( 'events' => $events)*/);
     }  
     
     /**
@@ -59,6 +69,6 @@ class FrontController extends Controller
      */
     public function contactAction()
     {
-        return array();
+        return $this->render('MainBundle:Front:contact.html.twig'/*, array( 'events' => $events)*/);
     }       
 }

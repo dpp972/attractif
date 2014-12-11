@@ -10,10 +10,10 @@ class BackController extends Controller
 {
     /**
      * @Route("/")
-     * @Template()
+     * @Template("home")
      */
     public function indexAction()
     {
-        return array();
+        return $this->render('MainBundle:Back:index.html.twig');
     }
 }
