@@ -306,4 +306,7 @@ class Evenement
     {
         return $this->participants;
     }
+    public function __toString(){
+        return $this->titre;
+    }
 }

@@ -1,16 +1,18 @@
-{% extends '::base.html.twig' %}
+{% extends 'MainBundle:Back:baseBack.html.twig' %}
 
 {% block body -%}
+<div class="page" style="width:40%;margin:auto">
     <h1>Client edit</h1>
 
-    {{ form(edit_form) }}
+        {{ form(edit_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('client') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+            <ul class="record_actions">
+        <li>
+            <a href="{{ path('client') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+</div>
 {% endblock %}

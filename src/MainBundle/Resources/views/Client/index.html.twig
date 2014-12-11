@@ -1,9 +1,10 @@
-{% extends '::base.html.twig' %}
+{% extends 'MainBundle:Back:baseBack.html.twig' %}
 
 {% block body -%}
+    <div class="page" style="width:80%;margin:auto">
     <h1>Client list</h1>
 
-    <table class="records_list">
+    <table class="records_list table table-striped">
         <thead>
             <tr>
                 <th>Id</th>
@@ -54,5 +55,6 @@
     </ul>
     <a href="{{ path('ADMIN') }}">
         Retour à l'accueil
-    </a>    
+    </a>
+</div>
 {% endblock %}

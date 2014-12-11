@@ -11,8 +11,9 @@
             <meta name="keywords" content="attractif, high tech, vente privée" />
             <meta name="author" content="groupe G IP Formation" />
         {% endblock %}           
-    {% block css %}{% endblock %}    
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />   
+    {% block css %}{% endblock %}
+    {% block javascript_header %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
 
