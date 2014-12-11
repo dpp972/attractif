@@ -70,12 +70,8 @@ $('.insc').click(function (e) {
     e.preventDefault;
     $('form').fadeOut();
     $('section').fadeOut();
+    $('.form-inscription').velocity('fadeIn');  
     
-    $('.form-inscription').velocity('fadeIn', {duration: 500});  
-    
-    
-    
-    console.log('plop');
 });
 
 $('.log').click(function (e) {

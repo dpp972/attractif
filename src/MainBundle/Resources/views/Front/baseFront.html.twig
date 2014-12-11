@@ -17,11 +17,11 @@
                 {% endfor %}
                     
             {% block content %}{% endblock %}
-            {% include 'MainBundle:Front:form-log.html.twig' %}
-            {% include 'MainBundle:Front:form-ins.html.twig' %}
             {% include 'MainBundle:Front:footer.html.twig' %}
         </div>
     </div>
+    {% include 'MainBundle:Front:form-log.html.twig' %}
+    {% include 'MainBundle:Front:form-ins.html.twig' %}
 {% endblock %}
     
 {% block javascripts %}

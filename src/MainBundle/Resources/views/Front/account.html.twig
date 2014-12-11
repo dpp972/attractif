@@ -1,7 +1,8 @@
 {% extends 'MainBundle:Front:baseFront.html.twig' %}
 
 {% block content %}
-    {# dump(user) #}  
+    {# dump(user) #}
+<section>
     <form class="form-inscription" method="post" action="#">
         <a class="insc membre" href="#">Dejà membre?</a>
         <div class="contenu">
@@ -48,4 +49,5 @@
         <input class="submit" type="submit" value="Se connecter">
         <a href="#" class="forgot">Mot de passe oublié</a>
     </form>
+</section>    
 {% endblock %}
