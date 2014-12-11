@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Home list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Slogan</th>
+                <th>Help</th>
+                <th>Email</th>
+                <th>Nomsociete</th>
+                <th>Telephone</th>
+                <th>Presentation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('home_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.slogan }}</td>
+                <td>{{ entity.help }}</td>
+                <td>{{ entity.email }}</td>
+                <td>{{ entity.nomSociete }}</td>
+                <td>{{ entity.telephone }}</td>
+                <td>{{ entity.presentation }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('home_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('home_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('ADMIN') }}">
+        Retour à l'accueil
+    </a>
+        <!--ul>
+        <li>
+            <a href="{#{ path('home_new') }#}">
+                Create a new entry
+            </a>
+        </li>
+    </ul-->
+    {% endblock %}

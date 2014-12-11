@@ -7,7 +7,7 @@
     <nav class="navbar">
         <ul>    <!-- Petit tricks pour l'espace insécable entre les LI --> 
             <li><a{% if app.request.attributes.get('_route') == 'about' %} class="current"{% endif %} href="{{path('about')}}">Qui sommes nous?</a></li><!--
-         --><li><a{% if app.request.attributes.get('_route') == 'meetings' %} class="current"{% endif %} href="{{path('meetings')}}">Mes rendes-vous</a></li><!--
+         --><li><a{% if app.request.attributes.get('_route') == 'meetings' %} class="current"{% endif %} href="{{path('meetings')}}">Mes rendez-vous</a></li><!--
          --><li><a{% if app.request.attributes.get('_route') == 'alerts' %} class="current"{% endif %} href="{{path('alerts')}}">Mes alertes</a></li><!--
          --><li><a{% if app.request.attributes.get('_route') == 'account' %} class="current"{% endif %} href="{{path('account')}}">Mon compte</a></li><!--
          --><li><a{% if app.request.attributes.get('_route') == 'contact' %} class="current"{% endif %} href="{{path('contact')}}">Aide & Contact</a></li>

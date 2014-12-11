@@ -3,6 +3,11 @@ main_front:
     type:     annotation
     prefix:   /
 
+back_home:
+    resource: "@MainBundle/Controller/HomeController.php"
+    type:     annotation
+    prefix:   /admin/home
+
 back_user:
     resource: "@MainBundle/Controller/ClientController.php"
     type:     annotation
