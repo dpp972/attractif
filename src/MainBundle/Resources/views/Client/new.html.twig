@@ -1,11 +1,12 @@
 {% extends 'MainBundle:Back:baseBack.html.twig' %}
+{% form_theme form 'MainBundle:Form:fields.html.twig' %}
 
 {% block body -%}
 <div class="page" style="width:40%;margin:auto">
-    <h1>Client creation</h1>
+    <h1 style="text-decoration:underline">Client creation</h1><br>
 
     {{ form(form) }}
-
+    <br><br>
         <ul class="record_actions">
     <li>
         <a href="{{ path('client') }}">

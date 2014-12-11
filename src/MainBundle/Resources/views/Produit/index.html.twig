@@ -2,7 +2,7 @@
 
 {% block body -%}
 <div class="page" style="width:80%;margin:auto">
-    <h1>Produit list</h1>
+    <h1 style="text-decoration:underline">Produit list</h1>
 
     <table class="records_list table table-striped">
         <thead>
@@ -22,10 +22,10 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('produit_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('produit_show', { 'id': entity.id }) }}">Voir</a>
                     </li>
                     <li>
-                        <a href="{{ path('produit_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('produit_edit', { 'id': entity.id }) }}">Editer</a>
                     </li>
                 </ul>
                 </td>
@@ -37,12 +37,14 @@
         <ul>
         <li>
             <a href="{{ path('produit_new') }}">
-                Create a new entry
+                 Créer un nouveau produit
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('ADMIN') }}">
+                Retour à l'accueil
             </a>
         </li>
     </ul>
-    <a href="{{ path('ADMIN') }}">
-        Retour à l'accueil
-    </a>
 </div>
 {% endblock %}
