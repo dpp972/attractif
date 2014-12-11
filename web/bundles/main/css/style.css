@@ -429,7 +429,8 @@ li {
   position: relative;
 }
 /* line 25, sass/layout/_evenement.scss */
-.page-evenement .header-page-evenement .header-page-evenement-container h1 {
+.page-evenement .header-page-evenement .header-page-evenement-container .type-evenement {
+  position: absolute;
   margin: 0;
   padding: 0;
   text-align: center;
@@ -439,29 +440,43 @@ li {
   font-weight: normal;
 }
 /* line 36, sass/layout/_evenement.scss */
-.page-evenement .header-page-evenement .header-page-evenement-container h1 .type-evenement {
-  display: inline-block;
-  margin-right: 35px;
-}
-/* line 42, sass/layout/_evenement.scss */
-.page-evenement .header-page-evenement .header-page-evenement-container .btn-inscription {
+.page-evenement .header-page-evenement .header-page-evenement-container .type-evenement .icon {
   position: absolute;
-  left: 0px;
-  top: 10px;
+  top: 19px;
+  margin-left: 5px;
+  font-size: 10px;
 }
-/* line 47, sass/layout/_evenement.scss */
-.page-evenement .header-page-evenement .header-page-evenement-container .btn-alerte {
+/* line 45, sass/layout/_evenement.scss */
+.page-evenement .header-page-evenement .header-page-evenement-container h1 {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 5px;
+  font-weight: normal;
+  cursor: pointer;
+}
+/* line 57, sass/layout/_evenement.scss */
+.page-evenement .header-page-evenement .header-page-evenement-container h1 .icon {
+  position: absolute;
+  top: 19px;
+  margin-left: 5px;
+  font-size: 10px;
+}
+/* line 68, sass/layout/_evenement.scss */
+.page-evenement .header-page-evenement .header-page-evenement-container .btn-inscription {
   position: absolute;
   right: 0px;
   top: 10px;
 }
 @media screen and (max-width: 1150px) {
-  /* line 54, sass/layout/_evenement.scss */
+  /* line 75, sass/layout/_evenement.scss */
   .page-evenement .header-page-evenement .header-page-evenement-container {
     width: 100%;
   }
 }
-/* line 62, sass/layout/_evenement.scss */
+/* line 83, sass/layout/_evenement.scss */
 .page-evenement .slider-marque {
   width: 100%;
   height: 255px;
@@ -469,7 +484,7 @@ li {
   position: relative;
   overflow: hidden;
 }
-/* line 71, sass/layout/_evenement.scss */
+/* line 93, sass/layout/_evenement.scss */
 .page-evenement .slider-marque .btn-slider-left {
   position: absolute;
   top: 125px;
@@ -477,11 +492,11 @@ li {
   cursor: pointer;
   opacity: 0.6;
 }
-/* line 79, sass/layout/_evenement.scss */
+/* line 101, sass/layout/_evenement.scss */
 .page-evenement .slider-marque .btn-slider-left:hover {
   opacity: 0.8;
 }
-/* line 83, sass/layout/_evenement.scss */
+/* line 105, sass/layout/_evenement.scss */
 .page-evenement .slider-marque .btn-slider-right {
   position: absolute;
   top: 125px;
@@ -489,11 +504,22 @@ li {
   cursor: pointer;
   opacity: 0.6;
 }
-/* line 91, sass/layout/_evenement.scss */
+/* line 113, sass/layout/_evenement.scss */
 .page-evenement .slider-marque .btn-slider-right:hover {
   opacity: 0.8;
 }
-/* line 97, sass/layout/_evenement.scss */
+/* line 117, sass/layout/_evenement.scss */
+.page-evenement .slider-marque .container-chevron {
+  width: 100%;
+  overflow: hidden;
+}
+/* line 122, sass/layout/_evenement.scss */
+.page-evenement .slider-marque .container-marque {
+  width: 10000px;
+  height: 256px;
+  overflow: hidden;
+}
+/* line 129, sass/layout/_evenement.scss */
 .page-evenement .page-evenement-footer {
   height: 40px;
   position: absolute;
@@ -503,36 +529,61 @@ li {
 /* line 1, sass/module/_marque.scss */
 .marque {
   width: 308px;
-  height: 255px;
+  height: 254px;
   border: 1px solid #56575a;
+  border-left: none;
   float: left;
+  position: relative;
   overflow: hidden;
 }
-/* line 12, sass/module/_marque.scss */
+/* line 14, sass/module/_marque.scss */
 .marque .header-marque {
-  width: 350px;
+  width: 100%;
   height: 155px;
   overflow: hidden;
 }
-/* line 18, sass/module/_marque.scss */
+/* line 20, sass/module/_marque.scss */
 .marque .header-marque .img {
   vertical-align: middle;
 }
-/* line 23, sass/module/_marque.scss */
+/* line 24, sass/module/_marque.scss */
+.marque .btn-alerte {
+  width: 105px;
+  height: 25px;
+  border: 1px solid #56575A;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 21px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  font-weight: normal;
+  cursor: pointer;
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 153px;
+}
+/* line 41, sass/module/_marque.scss */
 .marque .description {
   width: 100%;
   height: 75px;
   padding: 25px;
+  margin-top: 10px;
   text-align: center;
   font-size: 9px;
   letter-spacing: 0.6px;
   overflow: hidden;
 }
 
-/* line 37, sass/module/_marque.scss */
-.marque:nth-child(2n+1) {
-  border-left: none;
-  border-right: none;
+/* line 56, sass/module/_marque.scss */
+.marque:first-child {
+  border-left: 1px solid #56575a;
+}
+
+/* line 59, sass/module/_marque.scss */
+.marque:last-child {
+  border-right: 1px solid #56575a;
 }
 
 /* line 1, sass/module/_btn.scss */
