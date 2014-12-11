@@ -1,0 +1,16 @@
+{% extends 'MainBundle:Back:baseBack.html.twig' %}
+{% block body %}
+<div class="page" style="width:40%;margin:auto">
+    <h1>Entreprise creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('entreprise') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+</div>
+{% endblock %}

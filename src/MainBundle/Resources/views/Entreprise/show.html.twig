@@ -1,0 +1,39 @@
+{% extends 'MainBundle:Back:baseBack.html.twig' %}
+{% form_theme delete_form 'MainBundle:Form:fieldsDelete.html.twig' %}
+
+{% block body %}
+<div class="page" style="width:40%;margin:auto">
+    <h1>Entreprise</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Siret</th>
+                <td>{{ entity.siret }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ entity.libelle }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('entreprise') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('entreprise_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+  </ul>
+</div>
+{% endblock %}
