@@ -206,5 +206,9 @@ class Produit
     {
         return $this->entreprise;
     }
+    public function __toString(){
+        return $this->libelle;
+
+    }
 
 }

@@ -1,7 +1,8 @@
 {% extends 'MainBundle:Back:baseBack.html.twig' %}
+{% form_theme delete_form 'MainBundle:Form:fieldsDelete.html.twig' %}
 
 {% block body -%}
-<div class="page" style="width:80%;margin:auto">
+<div class="page" style="width:40%;margin:auto">
     <h1>Evenement</h1>
 
     <table class="record_properties table table-striped">
@@ -28,19 +29,19 @@
             </tr>
         </tbody>
     </table>
-
+    {{ form(delete_form) }}
+    <br><br>
         <ul class="record_actions">
     <li>
         <a href="{{ path('evenement') }}">
-            Back to the list
+            Retourner à la liste
         </a>
     </li>
     <li>
         <a href="{{ path('evenement_edit', { 'id': entity.id }) }}">
-            Edit
+            Editer
         </a>
     </li>
-    <li>{{ form(delete_form) }}</li>
 </ul>
 </div>
 {% endblock %}
