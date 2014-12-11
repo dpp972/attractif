@@ -14,7 +14,16 @@ class FrontController extends Controller
      */
     public function homeAction()
     {
-        return $this->render('MainBundle:Front:home.html.twig'/*, array( 'events' => $events)*/);
+        $events = $this->getDoctrine()
+            ->getRepository('MainBundle:Evenement')
+            ->findAll();
+
+        if (!$events) {
+            $this->get('session')->getFlashBag()->add('error', 'Pas d\'enregistrement');
+        }
+        //$this->get('session')->getFlashBag()->add('success', 'Enregistrement');
+        
+        return $this->render('MainBundle:Front:home.html.twig', array( 'events' => $events));
     }
     
     /**
@@ -23,7 +32,15 @@ class FrontController extends Controller
      */
     public function quiSommesNousAction()
     {
-        return $this->render('MainBundle:Front:quiSommesNous.html.twig'/*, array( 'events' => $events)*/);
+        $infos = $this->getDoctrine()
+            ->getRepository('MainBundle:Home')
+            ->find(1);
+
+        if (!$infos) {
+            $this->get('session')->getFlashBag()->add('error', 'L\'utilisateur n\'a pas été trouvé');
+        }   
+        
+        return $this->render('MainBundle:Front:quiSommesNous.html.twig', array( 'infos' => $infos));
     }
     
     /**
@@ -37,10 +54,8 @@ class FrontController extends Controller
             ->findAll();
 
         if (!$events) {
-            throw $this->createNotFoundException(
-                'Aucune vente privée n\'a été trouvé' 
-            );
-        }        
+            $this->get('session')->getFlashBag()->add('error', 'Aucun évenement n\'est enregistré');
+        }
         
         return $this->render('MainBundle:Front:rendezVous.html.twig', array( 'events' => $events));
     }    
@@ -51,7 +66,14 @@ class FrontController extends Controller
      */
     public function alertsAction()
     {
-        return $this->render('MainBundle:Front:alerts.html.twig'/*, array( 'events' => $events)*/);
+        $alerts = $this->getDoctrine()
+            ->getRepository('MainBundle:Entreprise')
+            ->findAll();
+
+        if (!$alerts) {
+            $this->get('session')->getFlashBag()->add('error', 'Aucune alerte n\'a été parametré');
+        }        
+        return $this->render('MainBundle:Front:alerts.html.twig', array( 'alerts' => $alerts));
     }      
     
     /**
@@ -60,15 +82,28 @@ class FrontController extends Controller
      */
     public function accountAction()
     {
-        return $this->render('MainBundle:Front:account.html.twig'/*, array( 'events' => $events)*/);
+        
+        $user = $this->getDoctrine()
+            ->getRepository('MainBundle:Client')
+            ->find(1);
+        
+        return $this->render('MainBundle:Front:account.html.twig', array( 'user' => $user));
     }  
     
     /**
      * @Route("/contact", name="contact")
      * @Template()
      */
-    public function contactAction()
-    {
-        return $this->render('MainBundle:Front:contact.html.twig'/*, array( 'events' => $events)*/);
+    public function contactAction(){
+        
+        $infos = $this->getDoctrine()
+            ->getRepository('MainBundle:Home')
+            ->find(1);
+
+        if (!$infos) {
+            $this->get('session')->getFlashBag()->add('error', 'L\'utilisateur n\'a pas été trouvé');
+        }   
+        
+        return $this->render('MainBundle:Front:contact.html.twig', array( 'infos' => $infos));
     }       
 }
