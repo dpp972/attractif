@@ -1,5 +1,7 @@
 {% extends 'MainBundle:Front:baseFront.html.twig' %}
 
+{% block title %}ATTRACTIF{% endblock %}
+
 {% block content %}
 {{dump(events)}}
     <section class="page-evenement">            
@@ -16,7 +18,7 @@
                     <li><a href='#'>du mardi 09/12 7h au samedi 13/12 8h</a></li>
                     <li><a href='#'>du mardi 09/12 7h au samedi 13/12 8h</a></li>
                 </ul>
-                <div class='btn btn-inscription'><a href="{{ path('subscribe', { 'id': 1 })}}">Inscription</a></div>
+                <div class='btn btn-inscription'><a href="{{ path('subscribe', { 'id': 3 })}}">Inscription</a></div>
 
             </div>
         </div>

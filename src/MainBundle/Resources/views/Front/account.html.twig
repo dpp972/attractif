@@ -1,23 +1,24 @@
 {% extends 'MainBundle:Front:baseFront.html.twig' %}
 
+{% block title %}ATTRACTIF{% endblock %}
+
 {% block content %}
 
-    {# dump(user) #}
 <section>
-    <form class="form-inscription" method="post" action="#">
+    <form class="form-account" method="post" action="{{ url('account') }}">
         <a class="insc membre" href="#">Dejà membre?</a>
         <div class="contenu">
             <div class="form-group">
                 <label>pays :</label>
-                <input type="text" value="">
+                <input type="text" value="{{ user.nom }}">
             </div>
             <div class="form-group">
                 <label>Nom :</label>
-                <input type="text" value="">
+                <input type="text" value="{{ user.nom }}">
             </div>
             <div class="form-group">
                 <label>Prenom :</label>
-                <input type="text" value="">
+                <input type="text" value="{{ user.prenom }}">
             </div>
             <div class="form-group">
                 <label>Née le : </label>
@@ -25,19 +26,15 @@
             </div>
             <div class="form-group">
                 <label>Code Postal :</label>
-                <input type="text" value="">
+                <input type="text" value="{{ user.cp }}">
             </div>
             <div class="form-group">
                 <label>Ville :</label>
-                <input type="text" value="">
+                <input type="text" value="{{ user.ville }}">
             </div>
             <div class="form-group">
                 <label>Email :</label>
-                <input type="text" value="">
-            </div>
-            <div class="form-group">
-                <label>Mot de passe :</label>
-                <input type="text" value="">
+                <input type="text" value="{{ user.email }}">
             </div>
         </div>
         <input class="submit" type="submit" value="Inscription">

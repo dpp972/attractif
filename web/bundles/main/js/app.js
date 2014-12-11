@@ -1,5 +1,5 @@
 $(function () {
-    alert('ok');
+    //alert('ok');
     var count = 0;
     var nbElement = $('.marque').size() * 308;
 

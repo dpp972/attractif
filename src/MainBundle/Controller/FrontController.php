@@ -9,13 +9,18 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+use MainBundle\Entity\Client;
+use MainBundle\Form\ClientType;
+use MainBundle\Entity\Evenement;
+use MainBundle\Entity\Entreprise;
+
 class FrontController extends Controller
 {
     /**
      * @Route("/home/todo", name="todo")
      * @Template()
      */
-    public function homeTodoAction(Request $request)
+    public function homeTodoAction()
     {
         $repo = $this->getDoctrine()
             ->getRepository('MainBundle:Evenement');
@@ -26,12 +31,10 @@ class FrontController extends Controller
             ->getQuery();
 
         $events = $query->getResult();
-        
-        
+
         if (!$events) {
             $this->get('session')->getFlashBag()->add('error', 'Il n\'y a pas d\'évenement pour cette période');
         }
-        
         return $this->render('MainBundle:Front:home.html.twig', array('events' => $events));        
     }
  
@@ -39,18 +42,16 @@ class FrontController extends Controller
      * @Route("/home/done", name="done")
      * @Template()
      */
-    public function homeDoneAction(Request $request)
+    public function homeDoneAction()
     {
         $repo = $this->getDoctrine()
             ->getRepository('MainBundle:Evenement');
         
-        $query = $repo->createQueryBuilder('p')
-            ->where('p.dateFin > CURRENT_DATE()') 
+        $query = $repo->createQueryBuilder('p')->where('p.dateFin > CURRENT_DATE()') 
             ->orderBy('p.dateFin', 'DESC')
             ->getQuery();
 
         $events = $query->getResult();
-        
         
         if (!$events) {
             $this->get('session')->getFlashBag()->add('error', 'Il n\'y a pas d\'évenement pour cette période');
@@ -64,19 +65,15 @@ class FrontController extends Controller
      * @Route("/", name="home")
      * @Template()
      */
-    public function homeAction(Request $request)
+    public function homeAction()
     {
-        $repo = $this->getDoctrine()
-            ->getRepository('MainBundle:Evenement');
-        
-        $query = $repo->createQueryBuilder('p')
-            ->where('p.dateFin >= CURRENT_DATE()')    /* 0 = now () */
+        $repo = $this->getDoctrine()->getRepository('MainBundle:Evenement');
+        $query = $repo->createQueryBuilder('p')->where('p.dateFin >= CURRENT_DATE()')
             ->andWhere('p.dateDeb <= CURRENT_DATE()') /* 0 = now () */          
             ->orderBy('p.dateFin', 'DESC')
             ->getQuery();
-
         $events = $query->getResult();
-
+        
         if (!$events) {
             $this->get('session')->getFlashBag()->add('error', 'Il n\'y a pas d\'évenement pour cette période');
         }
@@ -138,9 +135,16 @@ class FrontController extends Controller
      * @Route("/account", name="account")
      * @Template()
      */
-    public function accountAction()
-    {
-        
+    public function accountAction(Request $request)
+    {   
+        $user = new Client;
+        $form = $this->createForm(new ClientType ,$user);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $this->get('session')->getFlashBag()->add('error', 'Les informations ont été modifiées');
+        }
+
         $user = $this->getDoctrine()
             ->getRepository('MainBundle:Client')
             ->find(1);
@@ -170,12 +174,25 @@ class FrontController extends Controller
      * @Route("subscribe/{id}", name="subscribe")
      * @Method("get")
      */
-    public function subscribeAction()
+    public function subscribeAction($id)
     {
+        $user = new Client;
+        $event = new Evenement;
+        
+        $event = $this->getDoctrine()
+            ->getRepository('MainBundle:Evenement')
+            ->find($id);
+        
         $user = $this->getDoctrine()
             ->getRepository('MainBundle:Client')
             ->find(1);
-                
+        
+        //$user->addInscription($event);
+        
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+        
         return $this->redirect($this->generateUrl('home'));
     }
     
@@ -183,12 +200,26 @@ class FrontController extends Controller
      * @Route("addAlert/{id}", name="addAlerts")
      * @Method("get")
      */
-    public function addAlertAction()
+    public function addAlertAction($id)
     {
+        $user = new Client;
+        $ent = new Entreprise;
+        
+        $ent = $this->getDoctrine()
+            ->getRepository('MainBundle:Entreprise')
+            ->find($id);
+        
         $user = $this->getDoctrine()
             ->getRepository('MainBundle:Client')
             ->find(1);
-                
+        
+        // Add Alerte
+        //$user->addEvenement($ent);
+        
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+        
         return $this->redirect($this->generateUrl('home'));
     }          
 }
