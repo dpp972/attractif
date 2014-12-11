@@ -1,4 +1,5 @@
 $(function () {
+    alert('ok');
     var count = 0;
     var nbElement = $('.marque').size() * 308;
 
@@ -66,7 +67,7 @@ $(function () {
     });
 });
 
-$('.insc').on('click', function (e) {
+$('.insc').on('click', function(e){
     e.preventDefault;
     $('form').fadeOut();
     $('section').fadeOut();
