@@ -44,15 +44,21 @@
                 }
                 li {
                     display: none;
+                    color: #8b8b8c;
+
+                    &:hover{
+                        color: #fff;
+                    }
                 }
 
                 li:first-child{
                     font-size: 11px;
                     display: block;
+                    color: #fff;
                 }
 
                 &:hover {
-                    background: rgba(0,0,0,0.4);
+                    background: rgba(255,255,255,0.2);
                 }
 
             }
@@ -84,15 +90,20 @@
 
                 li {
                     display: none;
+                    color: #8b8b8c;
+                    &:hover{
+                        color: #fff;
+                    }
                 }
 
                 li:first-child{
                     font-size: 11px;
                     display: block;
+                    color: #fff;
                 }
 
                 &:hover {
-                    background: rgba(0,0,0,0.4);
+                    background: rgba(255,255,255,0.2);
                 }
 
 
