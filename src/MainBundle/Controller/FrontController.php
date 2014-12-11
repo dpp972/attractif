@@ -45,8 +45,7 @@ class FrontController extends Controller
             ->getRepository('MainBundle:Evenement');
         
         $query = $repo->createQueryBuilder('p')
-            ->where('p.dateFin > :now') 
-            ->setParameter('now', new \DateTime('now'))
+            ->where('p.dateFin > CURRENT_DATE()') 
             ->orderBy('p.dateFin', 'DESC')
             ->getQuery();
 
@@ -71,8 +70,8 @@ class FrontController extends Controller
             ->getRepository('MainBundle:Evenement');
         
         $query = $repo->createQueryBuilder('p')
-            ->where('p.dateFin >= NOW()')    /* 0 = now () */
-            ->andWhere('p.dateDeb <= NOW()') /* 0 = now () */          
+            ->where('p.dateFin >= CURRENT_DATE()')    /* 0 = now () */
+            ->andWhere('p.dateDeb <= CURRENT_DATE()') /* 0 = now () */          
             ->orderBy('p.dateFin', 'DESC')
             ->getQuery();
 
