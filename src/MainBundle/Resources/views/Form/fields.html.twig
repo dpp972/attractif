@@ -60,3 +60,10 @@
         </select>
     {% endspaceless %}
 {% endblock choice_widget_collapsed %}
+
+
+{% block textarea_widget %}
+    {% spaceless %}
+        <textarea class="form-control" {{ block('widget_attributes') }}>{{ value }}</textarea>
+    {% endspaceless %}
+{% endblock textarea_widget %}
