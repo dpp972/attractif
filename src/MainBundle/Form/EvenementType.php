@@ -20,8 +20,8 @@ class EvenementType extends AbstractType
             ->add('dateFin')
             ->add('nbPlace')
             ->add('produits')
-            ->add('inscrits')
-            ->add('participants')
+//            ->add('inscrits')
+//            ->add('participants')
         ;
     }
     

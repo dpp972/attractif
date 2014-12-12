@@ -389,4 +389,8 @@ class Client
     {
         return $this->participations;
     }
+
+    public function __toString(){
+        return $this->nom;
+    }
 }
