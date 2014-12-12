@@ -441,9 +441,10 @@ li {
   text-transform: uppercase;
   font-size: 11px;
   letter-spacing: 5px;
+  cursor: pointer;
 }
 
-/* line 22, sass/layout/_page-produit.scss */
+/* line 23, sass/layout/_page-produit.scss */
 .page-all-produit {
   position: absolute;
   width: 100%;
@@ -453,7 +454,7 @@ li {
   top: 55px;
   display: none;
 }
-/* line 32, sass/layout/_page-produit.scss */
+/* line 33, sass/layout/_page-produit.scss */
 .page-all-produit a {
   position: absolute;
   top: -35px;
@@ -461,6 +462,7 @@ li {
   text-transform: uppercase;
   font-size: 11px;
   letter-spacing: 5px;
+  cursor: pointer;
 }
 
 /* line 1, sass/layout/_evenement.scss */
@@ -521,7 +523,7 @@ li {
 }
 /* line 60, sass/layout/_evenement.scss */
 .page-evenement .header-page-evenement .header-page-evenement-container .type-evenement:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.4);
 }
 /* line 65, sass/layout/_evenement.scss */
 .page-evenement .header-page-evenement .header-page-evenement-container .all-produit {
@@ -536,7 +538,7 @@ li {
 }
 /* line 76, sass/layout/_evenement.scss */
 .page-evenement .header-page-evenement .header-page-evenement-container .evenement {
-  max-width: 321px;
+  max-width: 335px;
   position: absolute;
   left: 247px;
   top: 10px;
@@ -571,7 +573,7 @@ li {
 }
 /* line 113, sass/layout/_evenement.scss */
 .page-evenement .header-page-evenement .header-page-evenement-container .evenement:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.4);
 }
 /* line 121, sass/layout/_evenement.scss */
 .page-evenement .header-page-evenement .header-page-evenement-container .btn-inscription {
@@ -633,6 +635,16 @@ li {
   height: 40px;
   position: absolute;
   bottom: -2px;
+}
+
+/* line 191, sass/layout/_evenement.scss */
+.lien-produit {
+  cursor: pointer;
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
 }
 
 /* line 1, sass/module/_marque.scss */

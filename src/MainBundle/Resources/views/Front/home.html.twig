@@ -32,7 +32,7 @@
                 <div class="container-marque">
                     {% for product in events[0] %} 
                         <div class="marque">
-                            <div class="header-marque">
+                            <div class="header-marque lien-produit">
                                 <img src="{{asset('bundles/main/images/evenement/apple-contenu.jpg')}}" class="lien-produit img-responsive">
                                 <img class="logo-entreprise">
                             </div>
@@ -73,7 +73,7 @@
                     </div>
                     <div class="marque">
                         <div class="header-marque">
-                            <img src="{{asset('bundles/main/images/evenement/samsung-contenu.jpg')}}" class=" lien-produit img-responsive">
+                            <img src="{{asset('bundles/main/images/evenement/samsung-contenu.jpg')}}" class="lien-produit img-responsive">
                             <img class="logo-entreprise">
                         </div>
                         <div class='btn btn-alerte'><a href="{{ path('addAlerts', { 'id': 4 })}}" >Alerte</a></div>
