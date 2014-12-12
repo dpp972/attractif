@@ -650,6 +650,15 @@ li {
   -moz-filter: grayscale(100%);
   -ms-filter: grayscale(100%);
   -o-filter: grayscale(100%);
+  transition: 0.3s;
+}
+/* line 201, sass/layout/_evenement.scss */
+.lien-produit:hover {
+  filter: none;
+  -webkit-filter: none;
+  -moz-filter: none;
+  -ms-filter: none;
+  -o-filter: none;
 }
 
 /* line 1, sass/module/_marque.scss */

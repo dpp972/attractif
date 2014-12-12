@@ -195,5 +195,15 @@
     -moz-filter: grayscale(100%);
     -ms-filter: grayscale(100%);
     -o-filter: grayscale(100%);
+    
+    transition: 0.3s;
 
+    &:hover {
+
+        filter: none;
+        -webkit-filter: none;
+        -moz-filter: none;
+        -ms-filter: none;
+        -o-filter: none;
+    }
 }
