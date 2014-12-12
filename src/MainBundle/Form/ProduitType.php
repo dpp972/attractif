@@ -19,7 +19,8 @@ class ProduitType extends AbstractType
             ->add('description')
             ->add('entreprise')
             ->add('category')
-            ->add('evenements')
+//            ->add('images')
+//            ->add('evenements')
         ;
     }
     

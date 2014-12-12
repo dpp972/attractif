@@ -242,5 +242,13 @@ class FrontController extends Controller
         $em->flush();
         
         return $this->redirect($this->generateUrl('home'));
-    }          
+    }
+    /**
+     * @Route("test", name="test")
+     * @Template()
+     */
+    public function testAction()
+    {
+        return $this->render('MainBundle:Front:mailSend.html.twig');
+    }
 }

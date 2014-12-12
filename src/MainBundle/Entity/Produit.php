@@ -56,6 +56,19 @@ class Produit
      */
     protected $evenements;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Image", inversedBy="produits")
+     * @ORM\JoinTable(name="image_product")
+     */
+    protected $images;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imageMini", type="string", length=255)
+     */
+    protected $imageMini;
+
 
     public function __construct(){
         $this->category = new ArrayCollection();
@@ -211,4 +224,84 @@ class Produit
 
     }
 
+    /*-- GESTION DE L'UPLOAD D'IMAGE -----------------------------------------------------------------------------------------*/
+//    public function getAbsolutePath()
+//    {
+//        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+//    }
+//
+//    public function getWebPath()
+//    {
+//        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+//    }
+//
+//    protected function getUploadRootDir()
+//    {
+//        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+//        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+//    }
+//
+//    protected function getUploadDir()
+//    {
+//        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+//        // le document/image dans la vue.
+//        return 'uploads/documents';
+//    }
+
+
+    /**
+     * Set imageMini
+     *
+     * @param string $imageMini
+     * @return Produit
+     */
+    public function setImageMini($imageMini)
+    {
+        $this->imageMini = $imageMini;
+    
+        return $this;
+    }
+
+    /**
+     * Get imageMini
+     *
+     * @return string 
+     */
+    public function getImageMini()
+    {
+        return $this->imageMini;
+    }
+
+    /**
+     * Add images
+     *
+     * @param \MainBundle\Entity\Image $images
+     * @return Produit
+     */
+    public function addImage(\MainBundle\Entity\Image $images)
+    {
+        $this->images[] = $images;
+    
+        return $this;
+    }
+
+    /**
+     * Remove images
+     *
+     * @param \MainBundle\Entity\Image $images
+     */
+    public function removeImage(\MainBundle\Entity\Image $images)
+    {
+        $this->images->removeElement($images);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
 }
