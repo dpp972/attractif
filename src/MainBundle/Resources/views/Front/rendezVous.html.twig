@@ -4,8 +4,24 @@
 
 {% block content %}
 <section>
-{% for event in events %}
-    {#{dump(event)}#}
-{% endfor %}
-</section>
+    <h1>Rendez-vous</h1>
+    
+    <h3>Par évenenement</h3>
+    <p>Voici la liste des évenements, veuillez sélectionner les 
+        évenements que vous désirez suivre.</p>
+    
+    <form action="{{path('meetings')}}" method="post">
+        {% for li in list %}
+            <input 
+                {% for event in events %}
+                    {% if(event.id == li.id) %}S
+                        checked="true"
+                    {% endif %}
+                {% endfor %}
+                type="checkbox" value="{{ li.titre }}" name="event"> {{ li.titre }}<br />
+        {% endfor %}
+            <br />
+        <input style="color:#000;" type="submit" value="enregistrer">
+    </form>
+</section>  
 {% endblock %}

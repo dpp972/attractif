@@ -155,18 +155,18 @@ class FrontController extends Controller
             ->getRepository('MainBundle:Client')
             ->find(1);
 
-        $events = new Evenement;
-        $events = $this->getDoctrine()
+        $list = new Evenement;
+        $list = $this->getDoctrine()
             ->getRepository('MainBundle:Evenement')
             ->findAll();
         
-       $events = $user->getParticipations($events);
+       $events = $user->getParticipations($list);
         
         if (!$events) {
             $this->get('session')->getFlashBag()->add('error', 'Aucun évenement n\'est enregistré');
         }
         
-        return $this->render('MainBundle:Front:rendezVous.html.twig', array( 'events' => $events));
+        return $this->render('MainBundle:Front:rendezVous.html.twig', array( 'events' => $events, 'list' => $list));
     }    
 
     /**
@@ -180,18 +180,18 @@ class FrontController extends Controller
             ->getRepository('MainBundle:Client')
             ->find(1);
 
-        $events = new Evenement;
-        $events = $this->getDoctrine()
+        $ents = new Evenement;
+        $ents = $this->getDoctrine()
             ->getRepository('MainBundle:Entreprise')
             ->findAll();
         
-        $alerts = $user->getInscriptions($events);
+        $alerts = $user->getInscriptions($ents);
         
         if (!$alerts) {
             $this->get('session')->getFlashBag()->add('error', 'Aucune alerte n\'a été parametré');
         }
         
-        return $this->render('MainBundle:Front:alerts.html.twig', array( 'alerts' => $alerts ));
+        return $this->render('MainBundle:Front:alerts.html.twig', array( 'alerts' => $alerts , 'ents' => $ents));
     }      
     
     /**

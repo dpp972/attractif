@@ -14,6 +14,9 @@
                     <li><a href='{{ url('done')}}'>VENTE TERMINEE</a></li>
                 </ul>
                 <ul class='evenement'>    
+
+                    <li><a href='#'>du {{events[0].dateDeb|date("d/m - h")}}h au {{events[0].dateFin|date("d/m - h")}}h</a><i class="icon-date fa fa-sort-desc"></i></li>
+
                     {% for event in events %} 
                         <li><a href='{{ path(app.request.attributes.get('_route'), { 'id': event.id }) }}'>{{event.dateDeb|date("\\d\\u d/m - h\\h \\a\\u d/m - h\\h", "Europe/Paris")}} </a></li> 
                         {% endfor %}
@@ -106,8 +109,8 @@
         <a class="retour">retour aux évenements</a>
         <img src="{{asset('bundles/main/images/page-produit.png')}}" class="img-responsive">
     </section>
-        
-        <section class="page-all-produit">
+
+    <section class="page-all-produit">
         <a class="retour">retour aux évenements</a>
         <img src="{{asset('bundles/main/images/tout-produit.png')}}" class="img-responsive">
     </section>
