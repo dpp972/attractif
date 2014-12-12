@@ -19,15 +19,12 @@ class HomeController extends Controller
     /**
      * Lists all Home entities.
      *
-     * @Route("/", name="homeAdmin")
+     * @Route("/", name="home")
      * @Method("GET")
      * @Template()
      */
     public function indexAction()
     {
-        
-        
-        
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('MainBundle:Home')->findAll();
@@ -43,7 +40,7 @@ class HomeController extends Controller
      * @Method("POST")
      * @Template("MainBundle:Home:new.html.twig")
      */
-    /*public function createAction(Request $request)
+    public function createAction(Request $request)
     {
         $entity = new Home();
         $form = $this->createCreateForm($entity);
@@ -61,7 +58,7 @@ class HomeController extends Controller
             'entity' => $entity,
             'form'   => $form->createView(),
         );
-    }*/
+    }
 
     /**
      * Creates a form to create a Home entity.
@@ -89,7 +86,7 @@ class HomeController extends Controller
      * @Method("GET")
      * @Template()
      */
-    /*public function newAction()
+    public function newAction()
     {
         $entity = new Home();
         $form   = $this->createCreateForm($entity);
@@ -98,7 +95,7 @@ class HomeController extends Controller
             'entity' => $entity,
             'form'   => $form->createView(),
         );
-    }*/
+    }
 
     /**
      * Finds and displays a Home entity.

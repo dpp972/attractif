@@ -25,8 +25,12 @@ class FrontController extends Controller
         $repo = $this->getDoctrine()
             ->getRepository('MainBundle:Evenement');
         
+        $date = new \DateTime();
+        $date->format('Y-m-d H:i:s');     
+        
         $query = $repo->createQueryBuilder('p')
-            ->where('p.dateDeb > CURRENT_DATE()')
+            ->where('p.dateDeb > :date')
+            ->setParameter('date', $date)                
             ->orderBy('p.dateDeb', 'ASC')
             ->getQuery();
 
@@ -47,7 +51,11 @@ class FrontController extends Controller
         $repo = $this->getDoctrine()
             ->getRepository('MainBundle:Evenement');
         
-        $query = $repo->createQueryBuilder('p')->where('p.dateFin > CURRENT_DATE()') 
+        $date = new \DateTime();
+        $date->format('Y-m-d H:i:s');
+        $query = $repo->createQueryBuilder('p')           
+            ->where('p.dateFin < :date') 
+            ->setParameter('date', $date)
             ->orderBy('p.dateFin', 'DESC')
             ->getQuery();
 
@@ -67,9 +75,14 @@ class FrontController extends Controller
      */
     public function homeAction()
     {
+        $date = new \DateTime();
+        $date->format('Y-m-d H:i:s');        
+        
         $repo = $this->getDoctrine()->getRepository('MainBundle:Evenement');
-        $query = $repo->createQueryBuilder('p')->where('p.dateFin >= CURRENT_DATE()')
-            ->andWhere('p.dateDeb <= CURRENT_DATE()') /* 0 = now () */          
+        $query = $repo->createQueryBuilder('p')
+            ->where('p.dateDeb < :date')
+            ->andWhere('p.dateFin > :date') 
+            ->setParameter('date', $date)        
             ->orderBy('p.dateFin', 'DESC')
             ->getQuery();
         $events = $query->getResult();
