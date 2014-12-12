@@ -3,9 +3,6 @@
 {% block title %}ATTRACTIF{% endblock %}
 
 {% block content %}
-{% for alert in alerts %}
-    {#{dump(alert)}#}
-{% endfor %}
 <section>
     <h1>Alertes</h1>
     
@@ -14,8 +11,14 @@
         entreprises que vous désirez suivre.</p>
     
     <form action="{{path('alerts')}}" method="post">
-        {% for alert in alerts %}
-            <input type="checkbox" value="{{ alert.libelle }}" name="alert"> {{ alert.libelle }}<br />
+        {% for ent in ents %}
+            <input 
+                {% for alert in alerts %}
+                    {% if(alert.id == ent.id) %}S
+                        checked="true"
+                    {% endif %}
+                {% endfor %}
+                type="checkbox" value="{{ ent.libelle }}" name="alert"> {{ ent.libelle }}<br />
         {% endfor %}
             <br />
         <input style="color:#000;" type="submit" value="enregistrer">
