@@ -7,19 +7,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use MainBundle\Entity\Home;
-use MainBundle\Form\HomeType;
+use MainBundle\Entity\Categorie;
+use MainBundle\Form\CategorieType;
 
 /**
- * Home controller.
+ * Categorie controller.
  */
-class HomeController extends Controller
+class CategorieController extends Controller
 {
 
     /**
-     * Lists all Home entities.
+     * Lists all Categorie entities.
      *
-     * @Route("/", name="home")
+     * @Route("/", name="categorie")
      * @Method("GET")
      * @Template()
      */
@@ -27,22 +27,22 @@ class HomeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('MainBundle:Home')->findAll();
+        $entities = $em->getRepository('MainBundle:Categorie')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new Home entity.
+     * Creates a new Categorie entity.
      *
-     * @Route("/", name="home_create")
+     * @Route("/", name="categorie_create")
      * @Method("POST")
-     * @Template("MainBundle:Home:new.html.twig")
+     * @Template("MainBundle:Categorie:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new Home();
+        $entity = new Categorie();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -51,7 +51,7 @@ class HomeController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('home_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('categorie_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -61,16 +61,16 @@ class HomeController extends Controller
     }
 
     /**
-     * Creates a form to create a Home entity.
+     * Creates a form to create a Categorie entity.
      *
-     * @param Home $entity The entity
+     * @param Categorie $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Home $entity)
+    private function createCreateForm(Categorie $entity)
     {
-        $form = $this->createForm(new HomeType(), $entity, array(
-            'action' => $this->generateUrl('home_create'),
+        $form = $this->createForm(new CategorieType(), $entity, array(
+            'action' => $this->generateUrl('categorie_create'),
             'method' => 'POST',
         ));
 
@@ -80,15 +80,15 @@ class HomeController extends Controller
     }
 
     /**
-     * Displays a form to create a new Home entity.
+     * Displays a form to create a new Categorie entity.
      *
-     * @Route("/new", name="home_new")
+     * @Route("/new", name="categorie_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Home();
+        $entity = new Categorie();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -98,9 +98,9 @@ class HomeController extends Controller
     }
 
     /**
-     * Finds and displays a Home entity.
+     * Finds and displays a Categorie entity.
      *
-     * @Route("/{id}", name="home_show")
+     * @Route("/{id}", name="categorie_show")
      * @Method("GET")
      * @Template()
      */
@@ -108,10 +108,10 @@ class HomeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MainBundle:Home')->find($id);
+        $entity = $em->getRepository('MainBundle:Categorie')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Home entity.');
+            throw $this->createNotFoundException('Unable to find Categorie entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -123,9 +123,9 @@ class HomeController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Home entity.
+     * Displays a form to edit an existing Categorie entity.
      *
-     * @Route("/{id}/edit", name="home_edit")
+     * @Route("/{id}/edit", name="categorie_edit")
      * @Method("GET")
      * @Template()
      */
@@ -133,10 +133,10 @@ class HomeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MainBundle:Home')->find($id);
+        $entity = $em->getRepository('MainBundle:Categorie')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Home entity.');
+            throw $this->createNotFoundException('Unable to find Categorie entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -150,16 +150,16 @@ class HomeController extends Controller
     }
 
     /**
-    * Creates a form to edit a Home entity.
+    * Creates a form to edit a Categorie entity.
     *
-    * @param Home $entity The entity
+    * @param Categorie $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Home $entity)
+    private function createEditForm(Categorie $entity)
     {
-        $form = $this->createForm(new HomeType(), $entity, array(
-            'action' => $this->generateUrl('home_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new CategorieType(), $entity, array(
+            'action' => $this->generateUrl('categorie_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -168,20 +168,20 @@ class HomeController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Home entity.
+     * Edits an existing Categorie entity.
      *
-     * @Route("/{id}", name="home_update")
+     * @Route("/{id}", name="categorie_update")
      * @Method("PUT")
-     * @Template("MainBundle:Home:edit.html.twig")
+     * @Template("MainBundle:Categorie:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MainBundle:Home')->find($id);
+        $entity = $em->getRepository('MainBundle:Categorie')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Home entity.');
+            throw $this->createNotFoundException('Unable to find Categorie entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -191,7 +191,7 @@ class HomeController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('home_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('categorie_edit', array('id' => $id)));
         }
 
         return array(
@@ -201,9 +201,9 @@ class HomeController extends Controller
         );
     }
     /**
-     * Deletes a Home entity.
+     * Deletes a Categorie entity.
      *
-     * @Route("/{id}", name="home_delete")
+     * @Route("/{id}", name="categorie_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -213,21 +213,21 @@ class HomeController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('MainBundle:Home')->find($id);
+            $entity = $em->getRepository('MainBundle:Categorie')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Home entity.');
+                throw $this->createNotFoundException('Unable to find Categorie entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('home'));
+        return $this->redirect($this->generateUrl('categorie'));
     }
 
     /**
-     * Creates a form to delete a Home entity by id.
+     * Creates a form to delete a Categorie entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -236,7 +236,7 @@ class HomeController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('home_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('categorie_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

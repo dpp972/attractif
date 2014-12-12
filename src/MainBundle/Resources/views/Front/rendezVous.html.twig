@@ -1,5 +1,11 @@
 {% extends 'MainBundle:Front:baseFront.html.twig' %}
 
+{% block title %}ATTRACTIF{% endblock %}
+
 {% block content %}
-    {{dump(events)}}
+<section>
+{% for event in events %}
+    {{dump(event)}}
+{% endfor %}
+</section>
 {% endblock %}

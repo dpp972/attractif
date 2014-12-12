@@ -3,6 +3,16 @@ main_front:
     type:     annotation
     prefix:   /
 
+back_entreprise:
+    resource: "@MainBundle/Controller/EntrepriseController.php"
+    type:     annotation
+    prefix:   /admin/entreprise
+
+back_categorie:
+    resource: "@MainBundle/Controller/CategorieController.php"
+    type:     annotation
+    prefix:   /admin/categorie
+
 back_home:
     resource: "@MainBundle/Controller/HomeController.php"
     type:     annotation

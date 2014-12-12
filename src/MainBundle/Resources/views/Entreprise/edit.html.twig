@@ -2,19 +2,20 @@
 {% form_theme edit_form 'MainBundle:Form:fields.html.twig' %}
 {% form_theme delete_form 'MainBundle:Form:fieldsDelete.html.twig' %}
 
-{% block body -%}
-<div class="page" style="width:60%;margin:auto">
-    <h1>Home edit</h1>
+{% block body %}
+<div class="page" style="width:40%;margin:auto">
+
+    <h1 style="text-decoration:underline">Entreprise edit</h1>
 
     {{ form(edit_form) }}
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('home') }}">
+        <a href="{{ path('entreprise') }}">
             Back to the list
         </a>
     </li>
     <li>{{ form(delete_form) }}</li>
 </ul>
-</div>
+</div>    
 {% endblock %}

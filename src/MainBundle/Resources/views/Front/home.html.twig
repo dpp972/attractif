@@ -1,22 +1,27 @@
 {% extends 'MainBundle:Front:baseFront.html.twig' %}
 
-{% block content %}
-    <section class="page-evenement">
+{% block title %}ATTRACTIF{% endblock %}
 
-        {# dump(events) #}
+{% block content %}
+{% for event in event %}
+    {{dump(event)}}
+{% endfor %}
+    <section class="page-evenement">            
         <div class='header-page-evenement'>
             <div class='header-page-evenement-container'>
                 <ul class='type-evenement'>
-                    <li><a href='#'>VENTE EN COURS <i class="type-eve-icon fa fa-sort-desc"></i></a></li> 
-                    <li><a href='#'>VENTE A VENIR</a></li>
-                    <li><a href='#'>VENTE TERMINEE</a></li>
+                    <li><a href='#'>{% if app.request.attributes.get('_route') == 'home' %} VENTE EN COURS {% elseif app.request.attributes.get('_route') == 'todo' %}VENTE A VENIR{% else %}VENTE TERMINEE{% endif %}<i class="type-eve-icon fa fa-sort-desc"></i></a></li>
+                    <li><a href='{{ url('home')}}'>VENTE EN COURS</a></li>
+                    <li><a href='{{ url('todo')}}'>VENTE A VENIR</a></li>
+                    <li><a href='{{ url('done')}}'>VENTE TERMINEE</a></li>
                 </ul>
-                <ul class='evenement'>
-                    <li><a href='#'>du mardi 09/12 7h au samedi 13/12 8h <i class="icon-date fa fa-sort-desc"></i></a></li> 
-                    <li><a href='#'>du mardi 09/12 7h au samedi 13/12 8h</a></li>
-                    <li><a href='#'>du mardi 09/12 7h au samedi 13/12 8h</a></li>
+                <ul class='evenement'>    
+                    <li><a href='#'>{{events[0].dateDeb|date("\\d\\u d/m - h\\h \\a\\u d/m - h\\h", "Europe/Paris")}} </a><i class="icon-date fa fa-sort-desc"></i></li>
+                    {% for event in events %} 
+                    <li><a href='#'>{{event.dateDeb|date("\\d\\u d/m - h\\h \\a\\u d/m - h\\h", "Europe/Paris")}} </a></li> 
+                    {% endfor %}
                 </ul>
-                <div class='btn btn-inscription'><a href="{{ path('subscribe', { 'id': 1 })}}">Inscription</a></div>
+                <div class='btn btn-inscription'><a href="{{ path('subscribe', { 'id': events[0].id })}}">Inscription</a></div>
 
             </div>
         </div>

@@ -81,8 +81,8 @@ class Client
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="Evenement", inversedBy="inscrits")
-     * @ORM\JoinTable(name="event_user_inscription")
+     * @ORM\ManyToMany(targetEntity="Entreprise", inversedBy="inscrits")
+     * @ORM\JoinTable(name="entreprise_user_inscription")
      */
     private $inscriptions;
 
@@ -327,10 +327,10 @@ class Client
     /**
      * Add inscriptions
      *
-     * @param \MainBundle\Entity\Evenement $inscriptions
+     * @param \MainBundle\Entity\Entreprise $inscriptions
      * @return Client
      */
-    public function addInscription(\MainBundle\Entity\Evenement $inscriptions)
+    public function addInscription(\MainBundle\Entity\Entreprise $inscriptions)
     {
         $this->inscriptions[] = $inscriptions;
 
@@ -340,9 +340,9 @@ class Client
     /**
      * Remove inscriptions
      *
-     * @param \MainBundle\Entity\Evenement $inscriptions
+     * @param \MainBundle\Entity\Entreprise $inscriptions
      */
-    public function removeInscription(\MainBundle\Entity\Evenement $inscriptions)
+    public function removeInscription(\MainBundle\Entity\Entreprise $inscriptions)
     {
         $this->inscriptions->removeElement($inscriptions);
     }

@@ -1,6 +1,12 @@
 {% extends 'MainBundle:Front:baseFront.html.twig' %}
 
+{% block title %}ATTRACTIF{% endblock %}
+
 {% block content %}
+{% for alert in alerts %}
+    {{dump(alert)}}
+{% endfor %}
+<section>
     <h1>Alertes</h1>
     
     <h3>Par Entreprise</h3>
@@ -14,4 +20,5 @@
             <br />
         <input style="color:#000;" type="submit" value="enregistrer">
     </form>
+</section>    
 {% endblock %}

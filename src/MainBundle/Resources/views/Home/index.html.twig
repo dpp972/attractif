@@ -1,16 +1,17 @@
 {% extends 'MainBundle:Back:baseBack.html.twig' %}
 
 {% block body -%}
-<div style="width:80%;margin:auto;text-align:center;padding-top:60px">
-    <h1 style="text-decoration:underline">Home liste</h1><br>
+<div class="page" style="width:80%;margin:auto">
+    <h1>Home list</h1>
 
-    <table class="records_list table table-striped">
+    <table class="records_list">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Slogan</th>
                 <th>Help</th>
                 <th>Email</th>
+                <th>Adresse</th>
                 <th>Nomsociete</th>
                 <th>Telephone</th>
                 <th>Presentation</th>
@@ -24,16 +25,17 @@
                 <td>{{ entity.slogan }}</td>
                 <td>{{ entity.help }}</td>
                 <td>{{ entity.email }}</td>
+                <td>{{ entity.adresse }}</td>
                 <td>{{ entity.nomSociete }}</td>
                 <td>{{ entity.telephone }}</td>
                 <td>{{ entity.presentation }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('home_show', { 'id': entity.id }) }}">Voir</a>
+                        <a href="{{ path('home_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('home_edit', { 'id': entity.id }) }}">Editer</a>
+                        <a href="{{ path('home_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -41,15 +43,13 @@
         {% endfor %}
         </tbody>
     </table>
-    <a href="{{ path('ADMIN') }}">
-        Retour à l'accueil
-    </a>
-        <!--ul>
+
+        <ul>
         <li>
-            <a href="{#{ path('home_new') }#}">
+            <a href="{{ path('home_new') }}">
                 Create a new entry
             </a>
         </li>
-    </ul-->
+    </ul>
 </div>
     {% endblock %}

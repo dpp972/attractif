@@ -1,4 +1,5 @@
 $(function () {
+    //alert('ok');
     var count = 0;
     var nbElement = $('.marque').size() * 308;
 
@@ -29,7 +30,7 @@ $(function () {
             translateX: count + "px"
         });
         cachebtn();
-    })
+    });
 
     $('.btn-slider-right').click(function (e) {
         e.preventDefault;
@@ -38,7 +39,7 @@ $(function () {
             translateX: count + "px"
         });
         cachebtn();
-    })
+    });
 
 
     $('.type-eve-icon').click(function (e) {
@@ -51,8 +52,8 @@ $(function () {
             $('.type-evenement').find('li').first().show();
             icon = 1;
         }
-    })
-    
+    });
+
     $('.icon-date').click(function (e) {
         e.preventDefault;
         if (icon2 == 1) {
@@ -63,6 +64,31 @@ $(function () {
             $('.evenement').find('li').first().show();
             icon2 = 1;
         }
-    })
+    });
+});
 
-}); 
+
+$('.insc').on('click', function(e){
+    e.preventDefault;
+    $('form').fadeOut();
+    $('section').fadeOut();
+    $('.form-inscription').velocity('fadeIn');  
+    
+});
+
+$('.log').click(function (e) {
+    e.preventDefault;
+    $('section').velocity('fadeOut');
+    $('form').velocity('fadeOut');
+    $('.form-connect').velocity('fadeIn', {duration: 500});
+});
+$('.close-co').click(function (e) {
+    e.preventDefault;
+    $('.form-connect').velocity('fadeOut');
+    $('section').velocity('fadeIn', {delay: 300});
+});
+$('.close-ins').click(function (e) {
+    e.preventDefault;
+    $('.form-inscription').velocity('fadeOut');
+    $('section').velocity('fadeIn', {delay: 300});
+});

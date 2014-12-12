@@ -2,29 +2,95 @@
 
 namespace MainBundle\Controller;
 
+
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+use MainBundle\Entity\Client;
+use MainBundle\Form\ClientType;
+use MainBundle\Entity\Evenement;
+use MainBundle\Entity\Entreprise;
+
 class FrontController extends Controller
 {
+    /**
+     * @Route("/home/todo", name="todo")
+     * @Template()
+     */
+    public function homeTodoAction()
+    {
+        $repo = $this->getDoctrine()
+            ->getRepository('MainBundle:Evenement');
+        
+        $date = new \DateTime();
+        $date->format('Y-m-d H:i:s');     
+        
+        $query = $repo->createQueryBuilder('p')
+            ->where('p.dateDeb > :date')
+            ->setParameter('date', $date)                
+            ->orderBy('p.dateDeb', 'ASC')
+            ->getQuery();
+
+        $events = $query->getResult();
+
+        if (!$events) {
+            $this->get('session')->getFlashBag()->add('error', 'Il n\'y a pas d\'évenement pour cette période');
+        }
+        return $this->render('MainBundle:Front:home.html.twig', array('events' => $events));        
+    }
+ 
+    /**
+     * @Route("/home/done", name="done")
+     * @Template()
+     */
+    public function homeDoneAction()
+    {
+        $repo = $this->getDoctrine()
+            ->getRepository('MainBundle:Evenement');
+        
+        $date = new \DateTime();
+        $date->format('Y-m-d H:i:s');
+        $query = $repo->createQueryBuilder('p')           
+            ->where('p.dateFin < :date') 
+            ->setParameter('date', $date)
+            ->orderBy('p.dateFin', 'DESC')
+            ->getQuery();
+
+        $events = $query->getResult();
+        
+        if (!$events) {
+            $this->get('session')->getFlashBag()->add('error', 'Il n\'y a pas d\'évenement pour cette période');
+        }
+        
+        return $this->render('MainBundle:Front:home.html.twig', array('events' => $events));
+    }    
+    
+    
     /**
      * @Route("/", name="home")
      * @Template()
      */
     public function homeAction()
     {
-        $events = $this->getDoctrine()
-            ->getRepository('MainBundle:Evenement')
-            ->findAll();
-
-        if (!$events) {
-            $this->get('session')->getFlashBag()->add('error', 'Pas d\'enregistrement');
-        }
-        //$this->get('session')->getFlashBag()->add('success', 'Enregistrement');
+        $date = new \DateTime();
+        $date->format('Y-m-d H:i:s');        
         
-        return $this->render('MainBundle:Front:home.html.twig', array( 'events' => $events));
+        $repo = $this->getDoctrine()->getRepository('MainBundle:Evenement');
+        $query = $repo->createQueryBuilder('p')
+            ->where('p.dateDeb < :date')
+            ->andWhere('p.dateFin > :date') 
+            ->setParameter('date', $date)        
+            ->orderBy('p.dateFin', 'DESC')
+            ->getQuery();
+        $events = $query->getResult();
+        
+        if (!$events) {
+            $this->get('session')->getFlashBag()->add('error', 'Il n\'y a pas d\'évenement pour cette période');
+        }
+        return $this->render('MainBundle:Front:home.html.twig', array('events' => $events));
     }
     
     /**
@@ -50,10 +116,18 @@ class FrontController extends Controller
      */
     public function rendezVousAction()
     {
-        $events = $this->getDoctrine()
+        $user = new Client;
+        $user = $this->getDoctrine()
             ->getRepository('MainBundle:Client')
             ->find(1);
 
+        $events = new Evenement;
+        $events = $this->getDoctrine()
+            ->getRepository('MainBundle:Evenement')
+            ->findAll();
+        
+       $events = $user->getParticipations($events);
+        
         if (!$events) {
             $this->get('session')->getFlashBag()->add('error', 'Aucun évenement n\'est enregistré');
         }
@@ -67,9 +141,17 @@ class FrontController extends Controller
      */
     public function alertsAction()
     {
-        $alerts = $this->getDoctrine()
+        $user = new Client;
+        $user = $this->getDoctrine()
+            ->getRepository('MainBundle:Client')
+            ->find(1);
+
+        $events = new Evenement;
+        $events = $this->getDoctrine()
             ->getRepository('MainBundle:Entreprise')
             ->findAll();
+        
+        $alerts = $user->getInscriptions($events);
         
         if (!$alerts) {
             $this->get('session')->getFlashBag()->add('error', 'Aucune alerte n\'a été parametré');
@@ -82,9 +164,16 @@ class FrontController extends Controller
      * @Route("/account", name="account")
      * @Template()
      */
-    public function accountAction()
-    {
-        
+    public function accountAction(Request $request)
+    {   
+        $user = new Client;
+        $form = $this->createForm(new ClientType ,$user);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $this->get('session')->getFlashBag()->add('error', 'Les informations ont été modifiées');
+        }
+
         $user = $this->getDoctrine()
             ->getRepository('MainBundle:Client')
             ->find(1);
@@ -112,31 +201,45 @@ class FrontController extends Controller
     
     /**
      * @Route("subscribe/{id}", name="subscribe")
-     * @Method("get")
      */
-    public function subscribeAction()
+    public function subscribeAction($id)
     {
+        $event = $this->getDoctrine()
+            ->getRepository('MainBundle:Evenement')
+            ->find($id);
+        
         $user = $this->getDoctrine()
             ->getRepository('MainBundle:Client')
             ->find(1);
         
-        //$this->get('session')->getFlashBag()->add('success', 'L\'alerte evenement a bien été enregistré');
+        $user->addParticipation($event);
+        
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
         
         return $this->redirect($this->generateUrl('home'));
     }
     
     /**
      * @Route("addAlert/{id}", name="addAlerts")
-     * @Method("get")
      */
-    public function addAlertAction()
-    {
+    public function addAlertAction($id)
+    {        
+        
+        $ent = $this->getDoctrine()
+            ->getRepository('MainBundle:Entreprise')
+            ->find($id);
+        
         $user = $this->getDoctrine()
             ->getRepository('MainBundle:Client')
             ->find(1);
         
+        $user->addInscription($ent);
         
-        //$this->get('session')->getFlashBag()->add('success', 'L\'alerte par marque a bien été enregistré');
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
         
         return $this->redirect($this->generateUrl('home'));
     }
