@@ -1,5 +1,4 @@
 $(function () {
-    //alert('ok');
     var count = 0;
     var nbElement = $('.marque').size() * 308;
 
@@ -68,12 +67,12 @@ $(function () {
 });
 
 
-$('.insc').on('click', function(e){
+$('.insc').on('click', function (e) {
     e.preventDefault;
     $('form').fadeOut();
     $('section').fadeOut();
-    $('.form-inscription').velocity('fadeIn');  
-    
+    $('.form-inscription').velocity('fadeIn');
+
 });
 
 $('.log').click(function (e) {
@@ -92,3 +91,15 @@ $('.close-ins').click(function (e) {
     $('.form-inscription').velocity('fadeOut');
     $('section').velocity('fadeIn', {delay: 300});
 });
+
+$('.lien-produit').on('click', function (e) {
+    e.preventDefault;
+    $('section').velocity('fadeOut');
+    $('.page-produit').velocity('fadeIn', {delay: 300});
+})
+
+$('.page-produit').on('click', function (e) {
+    e.preventDefault;
+    $('section').velocity('fadeOut');
+    $('.page-evenement').velocity('fadeIn', {delay: 300});
+})

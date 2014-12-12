@@ -27,15 +27,18 @@ back_produit:
     resource: "@MainBundle/Controller/ProduitController.php"
     type:     annotation
     prefix:   /admin/produit
-    
+
 back_evenement:
     resource: "@MainBundle/Controller/EvenementController.php"
     type:     annotation
     prefix:   /admin/evenement
-    
+
 main_back:
     resource: "@MainBundle/Controller/BackController.php"
     type:     annotation
     prefix:   /admin
 
 
+#home:
+#     path:  /
+#     defaults: { _controller: MainBundle:Front:h }

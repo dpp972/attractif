@@ -3,9 +3,7 @@
 {% block title %}ATTRACTIF{% endblock %}
 
 {% block content %}
-{% for event in event %}
-    {{dump(event)}}
-{% endfor %}
+
     <section class="page-evenement">            
         <div class='header-page-evenement'>
             <div class='header-page-evenement-container'>
@@ -16,12 +14,14 @@
                     <li><a href='{{ url('done')}}'>VENTE TERMINEE</a></li>
                 </ul>
                 <ul class='evenement'>    
+                    {#
                     <li><a href='#'>{{events[0].dateDeb|date("\\d\\u d/m - h\\h \\a\\u d/m - h\\h", "Europe/Paris")}} </a><i class="icon-date fa fa-sort-desc"></i></li>
-                    {% for event in events %} 
-                    <li><a href='#'>{{event.dateDeb|date("\\d\\u d/m - h\\h \\a\\u d/m - h\\h", "Europe/Paris")}} </a></li> 
-                    {% endfor %}
+                        {% for event in events %} 
+                        <li><a href='#'>{{event.dateDeb|date("\\d\\u d/m - h\\h \\a\\u d/m - h\\h", "Europe/Paris")}} </a></li> 
+                        {% endfor %}
+                        #}
                 </ul>
-                <div class='btn btn-inscription'><a href="{{ path('subscribe', { 'id': events[0].id })}}">Inscription</a></div>
+                {#<div class='btn btn-inscription'><a href="{{ path('subscribe', { 'id': events[0].id })}}">Inscription</a></div>#}
 
             </div>
         </div>
@@ -32,7 +32,7 @@
                 <div class="container-marque">
                     <div class="marque">
                         <div class="header-marque">
-                            <img src="{{asset('bundles/main/images/evenement/apple-contenu.jpg')}}" class="img-responsive">
+                            <img src="{{asset('bundles/main/images/evenement/apple-contenu.jpg')}}" class="lien-produit img-responsive">
                             <img class="logo-entreprise">
                         </div>
                         <div class='btn btn-alerte'><a href="{{ path('addAlerts', { 'id': 1 })}}" >Alerte</a></div>
@@ -45,7 +45,7 @@
                     </div>
                     <div class="marque">
                         <div class="header-marque">
-                            <img src="{{asset('bundles/main/images/evenement/samsung-contenu.jpg')}}" class="img-responsive">
+                            <img src="{{asset('bundles/main/images/evenement/samsung-contenu.jpg')}}" class="lien-produit img-responsive">
                             <img class="logo-entreprise">
                         </div>
                         <div class='btn btn-alerte'><a href="{{ path('addAlerts', { 'id': 2 })}}" >Alerte</a></div>
@@ -58,7 +58,7 @@
                     </div>
                     <div class="marque">
                         <div class="header-marque">
-                            <img src="{{asset('bundles/main/images/evenement/sony-contenu.jpg')}}" class="img-responsive">
+                            <img src="{{asset('bundles/main/images/evenement/sony-contenu.jpg')}}" class="lien-produit img-responsive">
                             <img class="logo-entreprise">
                         </div>
                         <div class='btn btn-alerte'><a href="{{ path('addAlerts', { 'id': 3 })}}" >Alerte</a></div>
@@ -71,7 +71,7 @@
                     </div>
                     <div class="marque">
                         <div class="header-marque">
-                            <img src="{{asset('bundles/main/images/evenement/samsung-contenu.jpg')}}" class="img-responsive">
+                            <img src="{{asset('bundles/main/images/evenement/samsung-contenu.jpg')}}" class=" lien-produit img-responsive">
                             <img class="logo-entreprise">
                         </div>
                         <div class='btn btn-alerte'><a href="{{ path('addAlerts', { 'id': 4 })}}" >Alerte</a></div>
@@ -84,7 +84,7 @@
                     </div>
                     <div class="marque">
                         <div class="header-marque">
-                            <img src="{{asset('bundles/main/images/evenement/sony-contenu.jpg')}}" class="img-responsive">
+                            <img src="{{asset('bundles/main/images/evenement/sony-contenu.jpg')}}" class="lien-produit img-responsive">
                             <img class="logo-entreprise">
                         </div>
                         <div class='btn btn-alerte'><a href="{{ path('addAlerts', { 'id': 5 })}}" >Alerte</a></div>
@@ -101,5 +101,9 @@
         <div class='page-evenement-footer'>
             <img src="{{asset('bundles/main/images/evenement/les-logos.png')}}" class="img-responsive">
         </div>
+    </section>
+
+    <section class="page-produit">
+        <img src="{{asset('bundles/main/images/page-produit.png')}}" class="img-responsive">
     </section>
 {% endblock %}

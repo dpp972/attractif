@@ -422,6 +422,18 @@ li {
   letter-spacing: 1px;
 }
 
+/* line 1, sass/layout/_page-produit.scss */
+.page-produit {
+  position: absolute;
+  width: 100%;
+  height: 340px;
+  margin-top: 20px;
+  border-top: 1px solid #56575A;
+  border-bottom: 1px solid #56575A;
+  position: relative;
+  display: none;
+}
+
 /* line 1, sass/layout/_evenement.scss */
 .page-evenement {
   width: 100%;
@@ -3272,7 +3284,7 @@ li {
 }
 
 /* line 1, sass/module/_form.scss */
-.form-inscription, .form-connect {
+form {
   display: none;
 }
 
@@ -3290,7 +3302,7 @@ li {
 }
 
 /* line 16, sass/module/_form.scss */
-.form-inscription, .form-account {
+.form-inscription {
   width: 430px;
   height: 330px;
   border: 1px solid #8b8b8c;
@@ -3300,14 +3312,8 @@ li {
   right: 0;
   top: 200px;
 }
-.form-account {
-  margin: inherit;
-  border:inherit;
-  left: 200px;
-  top: 200px;
-}
 /* line 28, sass/module/_form.scss */
-.form-inscription .membre, .form-account .membre {
+.form-inscription .membre {
   font-size: 8px;
   position: absolute;
   right: 60px;
@@ -3315,7 +3321,7 @@ li {
   display: none;
 }
 /* line 36, sass/module/_form.scss */
-.form-inscription .contenu, .form-account .contenu {
+.form-inscription .contenu {
   position: absolute;
   top: 44px;
   margin: 0 auto;
@@ -3324,21 +3330,21 @@ li {
   width: 260px;
 }
 /* line 44, sass/module/_form.scss */
-.form-inscription .form-group, .form-account .form-group {
+.form-inscription .form-group {
   width: 100%;
   height: 15px;
   margin-bottom: 15px;
   position: relative;
 }
 /* line 50, sass/module/_form.scss */
-.form-inscription label, .form-account label {
+.form-inscription label {
   width: 80px;
   font-size: 10px;
   position: absolute;
   text-transform: uppercase;
 }
 /* line 57, sass/module/_form.scss */
-.form-inscription input, .form-account input {
+.form-inscription input {
   width: 150px;
   height: 15px;
   line-height: 15px;
@@ -3349,7 +3355,7 @@ li {
   font-size: 8px;
 }
 /* line 69, sass/module/_form.scss */
-.form-inscription .submit, .form-account .submit {
+.form-inscription .submit {
   bottom: 23px;
   left: 0;
   right: 0;

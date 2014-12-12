@@ -14,6 +14,7 @@ use MainBundle\Form\ClientType;
 use MainBundle\Entity\Evenement;
 use MainBundle\Entity\Entreprise;
 
+
 class FrontController extends Controller
 {
     /**
@@ -90,6 +91,7 @@ class FrontController extends Controller
         if (!$events) {
             $this->get('session')->getFlashBag()->add('error', 'Il n\'y a pas d\'évenement pour cette période');
         }
+         
         return $this->render('MainBundle:Front:home.html.twig', array('events' => $events));
     }
     
@@ -243,7 +245,7 @@ class FrontController extends Controller
         
         return $this->redirect($this->generateUrl('home'));
     }
-<<<<<<< HEAD
+
     /**
      * @Route("test", name="test")
      * @Template()
@@ -252,6 +254,5 @@ class FrontController extends Controller
     {
         return $this->render('MainBundle:Front:mailSend.html.twig');
     }
-=======
->>>>>>> 3af8e9f0df051937e70ae812e4c994c4d07fe850
+
 }
