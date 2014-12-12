@@ -243,7 +243,6 @@ class FrontController extends Controller
         
         return $this->redirect($this->generateUrl('home'));
     }
-<<<<<<< HEAD
     /**
      * @Route("test", name="test")
      * @Template()
@@ -252,6 +251,4 @@ class FrontController extends Controller
     {
         return $this->render('MainBundle:Front:mailSend.html.twig');
     }
-=======
->>>>>>> 3af8e9f0df051937e70ae812e4c994c4d07fe850
 }
