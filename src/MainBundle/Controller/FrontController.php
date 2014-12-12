@@ -229,5 +229,5 @@ class FrontController extends Controller
         $em->flush();
         
         return $this->redirect($this->generateUrl('home'));
-    }          
+    }
 }

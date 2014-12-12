@@ -69,4 +69,8 @@ class Categorie
     {
         return $this->libelle;
     }
+
+    public function __toString(){
+        return $this->libelle;
+    }
 }

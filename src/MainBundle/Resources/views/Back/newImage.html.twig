@@ -1,0 +1,17 @@
+{% extends 'MainBundle:Back:baseBack.html.twig' %}
+
+{% block body -%}
+<div class="page" style="width:40%;margin:auto">
+    <h1>Image upload</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('images_show_all') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+</div>
+{% endblock %}
