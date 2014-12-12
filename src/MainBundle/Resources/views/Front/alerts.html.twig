@@ -23,10 +23,9 @@
                         checked="true"
                     {% endif %}
                 {% endfor %}
-                type="checkbox" value="{{ ent.libelle }}" name="alert"> {{ ent.libelle }}<br />
+                type="checkbox" disabled="disabled" value="{{ ent.libelle }}" name="alert"> {{ ent.libelle }}<br />
         {% endfor %}
             <br />
-        <input style="color:#000;" type="submit" value="enregistrer">
     </form>
 </section>    
 {% endblock %}
