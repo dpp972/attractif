@@ -19,9 +19,8 @@ class FrontController extends Controller
 {
     /**
      * @Route("/home/todo", name="todo")
-     * @Template()
      */
-    public function homeTodoAction()
+    public function homeTodoAction(Request $request)
     {
         $repo = $this->getDoctrine()
             ->getRepository('MainBundle:Evenement');
@@ -37,17 +36,28 @@ class FrontController extends Controller
 
         $events = $query->getResult();
 
+        $id = $request->query->get('id', '0');
+               
+        if($id == 0){
+            $current = $events[0];
+        }else{
+            foreach($events as $event){
+                if($event->getId() == $id){
+                    $current = $event;
+                }
+            }
+        }
+        
         if (!$events) {
             $this->get('session')->getFlashBag()->add('error', 'Il n\'y a pas d\'évenement pour cette période');
         }
-        return $this->render('MainBundle:Front:home.html.twig', array('events' => $events));        
+        return $this->render('MainBundle:Front:home.html.twig', array('events' => $events, 'current' => $current));        
     }
  
     /**
      * @Route("/home/done", name="done")
-     * @Template()
      */
-    public function homeDoneAction()
+    public function homeDoneAction(Request $request)
     {
         $repo = $this->getDoctrine()
             ->getRepository('MainBundle:Evenement');
@@ -61,21 +71,32 @@ class FrontController extends Controller
             ->getQuery();
 
         $events = $query->getResult();
+
+        $id = $request->query->get('id', '0');
+               
+        if($id == 0){
+            $current = $events[0];
+        }else{
+            foreach($events as $event){
+                if($event->getId() == $id){
+                    $current = $event;
+                }
+            }
+        }
         
         if (!$events) {
             $this->get('session')->getFlashBag()->add('error', 'Il n\'y a pas d\'évenement pour cette période');
         }
         
-        return $this->render('MainBundle:Front:home.html.twig', array('events' => $events));
+        return $this->render('MainBundle:Front:home.html.twig', array('events' => $events, 'current' => $current));
     }    
     
     
     /**
      * @Route("/", name="home")
-     * @Template()
      */
-    public function homeAction()
-    {
+    public function homeAction(Request $request)
+    {        
         $date = new \DateTime();
         $date->format('Y-m-d H:i:s');        
         
@@ -88,11 +109,22 @@ class FrontController extends Controller
             ->getQuery();
         $events = $query->getResult();
         
+        $id = $request->query->get('id', '0');
+               
+        if($id == 0){
+            $current = $events[0];
+        }else{
+            foreach($events as $event){
+                if($event->getId() == $id){
+                    $current = $event;
+                }
+            }
+        }
+        
         if (!$events) {
             $this->get('session')->getFlashBag()->add('error', 'Il n\'y a pas d\'évenement pour cette période');
         }
-         
-        return $this->render('MainBundle:Front:home.html.twig', array('events' => $events));
+        return $this->render('MainBundle:Front:home.html.twig', array('events' => $events, 'current' => $current));
     }
     
     /**
@@ -245,7 +277,6 @@ class FrontController extends Controller
         
         return $this->redirect($this->generateUrl('home'));
     }
-
     /**
      * @Route("test", name="test")
      * @Template()

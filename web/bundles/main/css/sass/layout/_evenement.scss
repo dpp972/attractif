@@ -62,14 +62,22 @@
                 }
 
             }
-
+            .all-produit {
+                position: absolute;
+                right: 184px;
+                line-height: 20px;
+                text-transform: uppercase;
+                font-size: 11px;
+                letter-spacing: 5px;
+                font-weight: normal;
+                top: 15px;
+                
+            }
             .evenement {
-                max-width: 431px;
+                max-width: 321px;
 
                 position: absolute;
-                margin: 0 auto;
-                left: 0;
-                right: 0;
+                left: 247px;
                 top: 10px;
 
                 padding: 5px 10px;

@@ -83,23 +83,37 @@ $('.log').click(function (e) {
 });
 $('.close-co').click(function (e) {
     e.preventDefault;
+    $('section').hide();
     $('.form-connect').velocity('fadeOut');
-    $('section').velocity('fadeIn', {delay: 300});
+    $('.page-evenement').velocity('fadeIn', {delay: 300});
 });
 $('.close-ins').click(function (e) {
     e.preventDefault;
+    $('section').hide();
     $('.form-inscription').velocity('fadeOut');
-    $('section').velocity('fadeIn', {delay: 300});
+    $('.page-evenement').velocity('fadeIn', {delay: 300});
 });
 
 $('.lien-produit').on('click', function (e) {
     e.preventDefault;
     $('section').velocity('fadeOut');
-    $('.page-produit').velocity('fadeIn', {delay: 300});
+    $('.page-produit').velocity('fadeIn');
 })
 
 $('.page-produit').on('click', function (e) {
     e.preventDefault;
     $('section').velocity('fadeOut');
-    $('.page-evenement').velocity('fadeIn', {delay: 300});
+    $('.page-evenement').velocity('fadeIn');
+})
+
+$('.all-produit').on('click', function (e) {
+    e.preventDefault;
+    $('section').velocity('fadeOut');
+    $('.page-all-produit').velocity('fadeIn');
+})
+
+$('.retour').on('click', function (e) {
+    e.preventDefault;
+    $('section').velocity('fadeOut');
+    $('.page-evenement').velocity('fadeIn');
 })

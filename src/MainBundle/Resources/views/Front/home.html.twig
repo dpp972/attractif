@@ -14,15 +14,12 @@
                     <li><a href='{{ url('done')}}'>VENTE TERMINEE</a></li>
                 </ul>
                 <ul class='evenement'>    
-                    {#
-                    <li><a href='#'>{{events[0].dateDeb|date("\\d\\u d/m - h\\h \\a\\u d/m - h\\h", "Europe/Paris")}} </a><i class="icon-date fa fa-sort-desc"></i></li>
-                        {% for event in events %} 
-                        <li><a href='#'>{{event.dateDeb|date("\\d\\u d/m - h\\h \\a\\u d/m - h\\h", "Europe/Paris")}} </a></li> 
+                    {% for event in events %} 
+                        <li><a href='{{ path(app.request.attributes.get('_route'), { 'id': event.id }) }}'>{{event.dateDeb|date("\\d\\u d/m - h\\h \\a\\u d/m - h\\h", "Europe/Paris")}} </a></li> 
                         {% endfor %}
-                        #}
                 </ul>
-                {#<div class='btn btn-inscription'><a href="{{ path('subscribe', { 'id': events[0].id })}}">Inscription</a></div>#}
-
+                <a class="all-produit" href="#">Produits en vente</a>
+                <div class='btn btn-inscription'><a href="{{ path('subscribe', { 'id': current })}}">Inscription</a></div>
             </div>
         </div>
         <div class="slider-marque">
@@ -30,19 +27,21 @@
             <i class="btn-slider-right fa fa-chevron-right"></i>
             <div class="container-chevron">
                 <div class="container-marque">
-                    <div class="marque">
-                        <div class="header-marque">
-                            <img src="{{asset('bundles/main/images/evenement/apple-contenu.jpg')}}" class="lien-produit img-responsive">
-                            <img class="logo-entreprise">
+                    {% for product in events[0] %} 
+                        <div class="marque">
+                            <div class="header-marque">
+                                <img src="{{asset('bundles/main/images/evenement/apple-contenu.jpg')}}" class="lien-produit img-responsive">
+                                <img class="logo-entreprise">
+                            </div>
+                            <div class='btn btn-alerte'><a href="{{ path('addAlerts', { 'id': 1 })}}" >Alerte</a></div>
+                            <div class="description">
+                                Apple est créée le 1er avril 1976 à Los Altos,<br>
+                                puis constituée sous forme de société le 3 janvier 1977.<br>
+                                Parmi les produits phares qu'a connu Apple depuis sa création<br>
+                                on trouve : l'Apple II, le Macintosh, l'iPod, l'iPhone et l'iPad.<br>
+                            </div>
                         </div>
-                        <div class='btn btn-alerte'><a href="{{ path('addAlerts', { 'id': 1 })}}" >Alerte</a></div>
-                        <div class="description">
-                            Apple est créée le 1er avril 1976 à Los Altos,<br>
-                            puis constituée sous forme de société le 3 janvier 1977.<br>
-                            Parmi les produits phares qu'a connu Apple depuis sa création<br>
-                            on trouve : l'Apple II, le Macintosh, l'iPod, l'iPhone et l'iPad.<br>
-                        </div>
-                    </div>
+                    {% endfor %} 
                     <div class="marque">
                         <div class="header-marque">
                             <img src="{{asset('bundles/main/images/evenement/samsung-contenu.jpg')}}" class="lien-produit img-responsive">
@@ -104,6 +103,12 @@
     </section>
 
     <section class="page-produit">
+        <a class="retour">retour aux évenements</a>
         <img src="{{asset('bundles/main/images/page-produit.png')}}" class="img-responsive">
+    </section>
+        
+        <section class="page-all-produit">
+        <a class="retour">retour aux évenements</a>
+        <img src="{{asset('bundles/main/images/tout-produit.png')}}" class="img-responsive">
     </section>
 {% endblock %}

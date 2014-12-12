@@ -6,6 +6,35 @@
     border-top: 1px solid #56575A;
     border-bottom: 1px solid #56575A;
     position: relative;
-    
+
     display: none;
+
+    a {
+        position: absolute;
+        top: 17px;
+        line-height: 20px;
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 5px;
+    }
+}
+
+.page-all-produit {
+    position: absolute;
+    width: 100%;
+    height: 340px;
+    margin-top: 20px;
+    position: relative;
+    top: 55px;
+
+    display: none;
+
+    a {
+        position: absolute;
+        top: -35px;
+        line-height: 20px;
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 5px;
+    }
 }
