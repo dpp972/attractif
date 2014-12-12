@@ -103,10 +103,18 @@ class FrontController extends Controller
      */
     public function rendezVousAction()
     {
-        $events = $this->getDoctrine()
+        $user = new Client;
+        $user = $this->getDoctrine()
             ->getRepository('MainBundle:Client')
             ->find(1);
 
+        $events = new Evenement;
+        $events = $this->getDoctrine()
+            ->getRepository('MainBundle:Evenement')
+            ->findAll();
+        
+        $user->getInscriptions($events);
+        
         if (!$events) {
             $this->get('session')->getFlashBag()->add('error', 'Aucun évenement n\'est enregistré');
         }
