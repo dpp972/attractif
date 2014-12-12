@@ -19,7 +19,7 @@ class HomeController extends Controller
     /**
      * Lists all Home entities.
      *
-     * @Route("/", name="home")
+     * @Route("/", name="homeAdmin")
      * @Method("GET")
      * @Template()
      */
