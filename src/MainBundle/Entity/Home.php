@@ -42,6 +42,15 @@ class Home
      */
     private $email;
 
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=511)
+     */
+    private $adresse;
+    
+    
     /**
      * @var string
      *
@@ -210,5 +219,28 @@ class Home
     public function getPresentation()
     {
         return $this->presentation;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     * @return Home
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+    
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string 
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
     }
 }

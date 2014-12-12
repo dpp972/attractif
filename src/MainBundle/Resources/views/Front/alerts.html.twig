@@ -3,6 +3,9 @@
 {% block title %}ATTRACTIF{% endblock %}
 
 {% block content %}
+{% for alert in alerts %}
+    {{dump(alert)}}
+{% endfor %}
 <section>
     <h1>Alertes</h1>
     

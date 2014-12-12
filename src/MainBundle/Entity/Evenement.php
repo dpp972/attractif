@@ -55,21 +55,14 @@ class Evenement
      */
     private $produits;
 
-
-
     /**
      * @ORM\ManyToMany(targetEntity="Client", mappedBy="inscriptions")
      */
     private $inscrits;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Client", mappedBy="participations")
-     */
-    private $participants;
 
     public function __construct(){
         $this->inscrits = new ArrayCollection();
-        $this->participants = new ArrayCollection();
         $this->produits = new ArrayCollection();
     }
 

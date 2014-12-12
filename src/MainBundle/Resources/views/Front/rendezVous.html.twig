@@ -4,6 +4,8 @@
 
 {% block content %}
 <section>
-    {{dump(events)}}
+{% for event in events %}
+    {{dump(event)}}
+{% endfor %}
 </section>
 {% endblock %}
