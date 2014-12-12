@@ -4,10 +4,11 @@
 
 {% block content %}
 
-{#% for event in events %}
-    {{dump(event)}}
-{% endfor %#}
+{% for event in events %}
+    {#{dump(event)}#}
+{% endfor %}
 
+{{current}}
     <section class="page-evenement">            
         <div class='header-page-evenement'>
             <div class='header-page-evenement-container'>
@@ -20,7 +21,7 @@
                 <ul class='evenement'>    
                     <li><a href='#'>{{events[0].dateDeb|date("\\d\\u d/m - h\\h \\a\\u d/m - h\\h", "Europe/Paris")}} </a><i class="icon-date fa fa-sort-desc"></i></li>
                     {% for event in events %} 
-                    <li><a href='#'>{{event.dateDeb|date("\\d\\u d/m - h\\h \\a\\u d/m - h\\h", "Europe/Paris")}} </a></li> 
+                    <li><a href='{{ path(app.request.attributes.get('_route'), { 'id': event.id }) }}'>{{event.dateDeb|date("\\d\\u d/m - h\\h \\a\\u d/m - h\\h", "Europe/Paris")}} </a></li> 
                     {% endfor %}
                 </ul>
                 <div class='btn btn-inscription'><a href="{{ path('subscribe', { 'id': events[0].id })}}">Inscription</a></div>
@@ -32,6 +33,7 @@
             <i class="btn-slider-right fa fa-chevron-right"></i>
             <div class="container-chevron">
                 <div class="container-marque">
+                    {% for product in events[0] %} 
                     <div class="marque">
                         <div class="header-marque">
                             <img src="{{asset('bundles/main/images/evenement/apple-contenu.jpg')}}" class="img-responsive">
@@ -45,6 +47,7 @@
                             on trouve : l'Apple II, le Macintosh, l'iPod, l'iPhone et l'iPad.<br>
                         </div>
                     </div>
+                    {% endfor %} 
                     <div class="marque">
                         <div class="header-marque">
                             <img src="{{asset('bundles/main/images/evenement/samsung-contenu.jpg')}}" class="img-responsive">
