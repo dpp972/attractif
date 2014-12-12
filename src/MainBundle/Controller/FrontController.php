@@ -113,7 +113,7 @@ class FrontController extends Controller
             ->getRepository('MainBundle:Evenement')
             ->findAll();
         
-        $user->getInscriptions($events);
+       $events = $user->getParticipations($events);
         
         if (!$events) {
             $this->get('session')->getFlashBag()->add('error', 'Aucun évenement n\'est enregistré');
@@ -128,9 +128,17 @@ class FrontController extends Controller
      */
     public function alertsAction()
     {
-        $alerts = $this->getDoctrine()
+        $user = new Client;
+        $user = $this->getDoctrine()
+            ->getRepository('MainBundle:Client')
+            ->find(1);
+
+        $events = new Evenement;
+        $events = $this->getDoctrine()
             ->getRepository('MainBundle:Entreprise')
             ->findAll();
+        
+        $alerts = $user->getInscriptions($events);
         
         if (!$alerts) {
             $this->get('session')->getFlashBag()->add('error', 'Aucune alerte n\'a été parametré');
@@ -180,13 +188,9 @@ class FrontController extends Controller
     
     /**
      * @Route("subscribe/{id}", name="subscribe")
-     * @Method("get")
      */
     public function subscribeAction($id)
     {
-        $user = new Client;
-        $event = new Evenement;
-        
         $event = $this->getDoctrine()
             ->getRepository('MainBundle:Evenement')
             ->find($id);
@@ -195,7 +199,7 @@ class FrontController extends Controller
             ->getRepository('MainBundle:Client')
             ->find(1);
         
-        //$user->addInscription($event);
+        $user->addParticipation($event);
         
         $em = $this->getDoctrine()->getManager();
         $em->persist($user);
@@ -206,12 +210,9 @@ class FrontController extends Controller
     
     /**
      * @Route("addAlert/{id}", name="addAlerts")
-     * @Method("get")
      */
     public function addAlertAction($id)
-    {
-        $user = new Client;
-        $ent = new Entreprise;
+    {        
         
         $ent = $this->getDoctrine()
             ->getRepository('MainBundle:Entreprise')
@@ -221,8 +222,7 @@ class FrontController extends Controller
             ->getRepository('MainBundle:Client')
             ->find(1);
         
-        // Add Alerte
-        //$user->addEvenement($ent);
+        $user->addInscription($ent);
         
         $em = $this->getDoctrine()->getManager();
         $em->persist($user);

@@ -36,7 +36,11 @@ class Entreprise
      */
     private $libelle;
 
-
+    /**
+     * @ORM\ManyToMany(targetEntity="Client", mappedBy="participations")
+     */
+    private $participants;
+    
     /**
      * ORM\OneToMany(targetEntity="Produit", mappedBy="entreprise")
      */
@@ -44,6 +48,7 @@ class Entreprise
 
     public function __construct(){
         $this->produits = new ArrayCollection();
+        $this->participants = new ArrayCollection();
     }
 
     /**
