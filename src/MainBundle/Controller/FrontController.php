@@ -139,5 +139,13 @@ class FrontController extends Controller
         //$this->get('session')->getFlashBag()->add('success', 'L\'alerte par marque a bien été enregistré');
         
         return $this->redirect($this->generateUrl('home'));
-    }          
+    }
+    /**
+     * @Route("test", name="test")
+     * @Template()
+     */
+    public function testAction()
+    {
+        return $this->render('MainBundle:Front:mailSend.html.twig');
+    }
 }
