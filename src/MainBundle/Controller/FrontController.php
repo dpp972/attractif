@@ -35,9 +35,16 @@ class FrontController extends Controller
 
         $events = $query->getResult();
 
-        $current = $request->query->get('id', '0');
-        if($current == 0){
-            $current = $events[0]->getId();
+        $id = $request->query->get('id', '0');
+               
+        if($id == 0){
+            $current = $events[0];
+        }else{
+            foreach($events as $event){
+                if($event->getId() == $id){
+                    $current = $event;
+                }
+            }
         }
         
         if (!$events) {
@@ -64,9 +71,16 @@ class FrontController extends Controller
 
         $events = $query->getResult();
 
-        $current = $request->query->get('id', '0');
-        if($current == 0){
-            $current = $events[0]->getId();
+        $id = $request->query->get('id', '0');
+               
+        if($id == 0){
+            $current = $events[0];
+        }else{
+            foreach($events as $event){
+                if($event->getId() == $id){
+                    $current = $event;
+                }
+            }
         }
         
         if (!$events) {
@@ -94,9 +108,16 @@ class FrontController extends Controller
             ->getQuery();
         $events = $query->getResult();
         
-        $current = $request->query->get('id', '0');
-        if($current == 0){
-            $current = $events[0]->getId();
+        $id = $request->query->get('id', '0');
+               
+        if($id == 0){
+            $current = $events[0];
+        }else{
+            foreach($events as $event){
+                if($event->getId() == $id){
+                    $current = $event;
+                }
+            }
         }
         
         if (!$events) {

@@ -4,11 +4,7 @@
 
 {% block content %}
 
-{% for event in events %}
-    {#{dump(event)}#}
-{% endfor %}
-
-{{current}}
+{{dump(current.produits)}}
     <section class="page-evenement">            
         <div class='header-page-evenement'>
             <div class='header-page-evenement-container'>
@@ -24,7 +20,7 @@
                     <li><a href='{{ path(app.request.attributes.get('_route'), { 'id': event.id }) }}'>{{event.dateDeb|date("\\d\\u d/m - h\\h \\a\\u d/m - h\\h", "Europe/Paris")}} </a></li> 
                     {% endfor %}
                 </ul>
-                <div class='btn btn-inscription'><a href="{{ path('subscribe', { 'id': events[0].id })}}">Inscription</a></div>
+                <div class='btn btn-inscription'><a href="{{ path('subscribe', { 'id': current })}}">Inscription</a></div>
 
             </div>
         </div>
