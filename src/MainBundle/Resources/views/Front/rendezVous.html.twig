@@ -18,10 +18,8 @@
                         checked="true"
                     {% endif %}
                 {% endfor %}
-                type="checkbox" value="{{ li.titre }}" name="event"> {{ li.titre }}<br />
+                type="checkbox" disabled="disabled" value="{{ li.titre }}" name="event"> {{ li.titre }}<br />
         {% endfor %}
-            <br />
-        <input style="color:#000;" type="submit" value="enregistrer">
     </form>
 </section>  
 {% endblock %}
